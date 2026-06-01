@@ -1,27 +1,35 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { X } from "lucide-react";
-import g1 from "@/assets/gallery-1.jpg";
-import g2 from "@/assets/gallery-2.jpg";
-import g3 from "@/assets/gallery-3.jpg";
-import g4 from "@/assets/gallery-4.jpg";
-import g5 from "@/assets/gallery-5.jpg";
-import g6 from "@/assets/gallery-6.jpg";
+import g1 from "@/assets/photos/p1.jpg";
+import g2 from "@/assets/photos/p2.jpg";
+import g3 from "@/assets/photos/p3.jpg";
+import g4 from "@/assets/photos/p4.jpg";
+import g5 from "@/assets/photos/p5.jpg";
+import g6 from "@/assets/photos/p6.jpg";
+import g7 from "@/assets/photos/p7.jpg";
+import g8 from "@/assets/photos/p8.jpg";
+import g9 from "@/assets/photos/p9.jpg";
+import g10 from "@/assets/photos/p10.jpg";
 
 const photos = [
-  { src: g1, alt: "Pista da ballo con laser", span: "row-span-2" },
-  { src: g2, alt: "Bar premium dorato", span: "" },
-  { src: g3, alt: "Tavolo VIP con champagne", span: "" },
-  { src: g4, alt: "DJ silhouette", span: "row-span-2" },
-  { src: g5, alt: "Ospiti in pista", span: "" },
-  { src: g6, alt: "Ingresso luxury", span: "" },
-];
+  { src: g4, alt: "Sala principale con luci blu" , span: "row-span-2" },
+  { src: g7, alt: "Bar centrale del MAXIMUS" },
+  { src: g8, alt: "Salotti in zona lounge" },
+  { src: g1, alt: "Pista da ballo illuminata", span: "row-span-2" },
+  { src: g5, alt: "Area divani privati" },
+  { src: g3, alt: "Sala con scultura" },
+  { src: g6, alt: "Corridoio rosso del locale" },
+  { src: g2, alt: "Sala secondaria" },
+  { src: g9, alt: "Ingresso panoramico" },
+  { src: g10, alt: "Cabine private" },
+] as const;
 
 export function Gallery() {
   const [active, setActive] = useState<number | null>(null);
 
   return (
-    <section id="gallery" className="relative py-32 px-6">
+    <section id="gallery" className="relative py-24 md:py-32 px-6">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -30,34 +38,34 @@ export function Gallery() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <p className="text-xs tracking-[0.5em] text-gold uppercase mb-4">
-            Gallery
-          </p>
-          <h2 className="font-display text-5xl md:text-6xl font-bold">
+          <p className="text-xs tracking-[0.5em] text-gold uppercase mb-4">Galleria</p>
+          <h2 className="font-display text-4xl md:text-6xl font-bold">
             Le Nostre <span className="text-gold-gradient">Notti</span>
           </h2>
           <div className="divider-gold w-32 mx-auto mt-6" />
         </motion.div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 auto-rows-[220px] md:auto-rows-[260px] gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-3 auto-rows-[180px] sm:auto-rows-[220px] md:auto-rows-[260px] gap-3 sm:gap-4">
           {photos.map((p, i) => (
             <motion.button
               key={i}
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: i * 0.08 }}
+              transition={{ duration: 0.5, delay: Math.min(i * 0.05, 0.4) }}
               onClick={() => setActive(i)}
-              className={`group relative overflow-hidden rounded-xl neon-border ${p.span}`}
+              className={`group relative overflow-hidden rounded-xl neon-border ${("span" in p && p.span) || ""}`}
+              aria-label={p.alt}
             >
               <img
                 src={p.src}
                 alt={p.alt}
                 loading="lazy"
+                decoding="async"
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1.2s] group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-60 group-hover:opacity-30 transition-opacity" />
-              <div className="absolute inset-0 ring-1 ring-inset ring-gold/0 group-hover:ring-gold/40 group-hover:shadow-[inset_0_0_30px_rgba(245,208,111,0.25)] transition-all duration-500" />
+              <div className="absolute inset-0 ring-1 ring-inset ring-gold/0 group-hover:ring-gold/40 transition-all duration-500" />
             </motion.button>
           ))}
         </div>
@@ -69,7 +77,7 @@ export function Gallery() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] bg-background/95 backdrop-blur-xl flex items-center justify-center p-6"
+            className="fixed inset-0 z-[100] bg-background/95 backdrop-blur-xl flex items-center justify-center p-4"
             onClick={() => setActive(null)}
           >
             <button
@@ -85,7 +93,7 @@ export function Gallery() {
               exit={{ scale: 0.9, opacity: 0 }}
               src={photos[active].src}
               alt={photos[active].alt}
-              className="max-h-[90vh] max-w-[90vw] rounded-xl neon-border object-contain"
+              className="max-h-[90vh] max-w-[95vw] rounded-xl neon-border object-contain"
             />
           </motion.div>
         )}
