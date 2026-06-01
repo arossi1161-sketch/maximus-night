@@ -77,14 +77,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
+      { title: "Maximus" },
+      { name: "description", content: "Maximus Vision is a premium website for a luxury nightclub, offering an immersive digital experience." },
       { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { property: "og:title", content: "Maximus" },
+      { property: "og:description", content: "Maximus Vision is a premium website for a luxury nightclub, offering an immersive digital experience." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "Maximus" },
+      { name: "twitter:description", content: "Maximus Vision is a premium website for a luxury nightclub, offering an immersive digital experience." },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/VcA3YYflDPTfu7myEGz9q9gkLi22/social-images/social-1780308696057-197721.webp" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/VcA3YYflDPTfu7myEGz9q9gkLi22/social-images/social-1780308696057-197721.webp" },
     ],
     links: [
       {
