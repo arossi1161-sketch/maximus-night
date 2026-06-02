@@ -199,35 +199,54 @@ export function Gallery() {
             ref={lightboxRef}
             role="dialog"
             aria-modal="true"
-            aria-label={`Lightbox: ${photos[active].alt}`}
+            aria-labelledby="lightbox-title"
+            aria-describedby="lightbox-counter"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-[100] bg-background/95 backdrop-blur-xl flex items-center justify-center p-4"
             onClick={() => setActive(null)}
+            onTouchStart={(e) => {
+              dragState.current.startX = e.touches[0].clientX;
+              dragState.current.moved = false;
+            }}
+            onTouchEnd={(e) => {
+              const dx = e.changedTouches[0].clientX - dragState.current.startX;
+              if (Math.abs(dx) > 50) {
+                if (dx < 0) {
+                  setActive((p) => (p !== null && p < photos.length - 1 ? p + 1 : 0));
+                } else {
+                  setActive((p) => (p !== null && p > 0 ? p - 1 : photos.length - 1));
+                }
+              }
+            }}
           >
             <button
               ref={closeBtnRef}
-              className="absolute top-6 right-6 text-gold hover:scale-110 transition focus:outline-none focus:ring-2 focus:ring-gold rounded-sm"
-              onClick={() => setActive(null)}
-              aria-label="Chiudi lightbox"
+              type="button"
+              className="fixed top-4 right-4 z-10 w-12 h-12 rounded-full bg-background/80 backdrop-blur-md border border-gold/40 flex items-center justify-center text-gold hover:bg-gold/20 hover:scale-110 transition shadow-[0_0_20px_rgba(245,208,111,0.4)] focus:outline-none focus-visible:ring-2 focus-visible:ring-gold"
+              onClick={(e) => { e.stopPropagation(); setActive(null); }}
+              aria-label="Chiudi galleria"
             >
-              <X size={32} aria-hidden="true" />
+              <X size={24} aria-hidden="true" />
             </button>
             <button
-              className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full neon-border flex items-center justify-center text-gold hover:bg-gold/10 transition focus:outline-none focus:ring-2 focus:ring-gold"
+              type="button"
+              className="hidden sm:flex absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full neon-border items-center justify-center text-gold hover:bg-gold/10 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-gold"
               onClick={(e) => { e.stopPropagation(); setActive((prev) => (prev !== null && prev > 0 ? prev - 1 : photos.length - 1)); }}
               aria-label="Foto precedente"
             >
               <ChevronLeft className="w-5 h-5" aria-hidden="true" />
             </button>
             <button
-              className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full neon-border flex items-center justify-center text-gold hover:bg-gold/10 transition focus:outline-none focus:ring-2 focus:ring-gold"
+              type="button"
+              className="hidden sm:flex absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full neon-border items-center justify-center text-gold hover:bg-gold/10 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-gold"
               onClick={(e) => { e.stopPropagation(); setActive((prev) => (prev !== null && prev < photos.length - 1 ? prev + 1 : 0)); }}
               aria-label="Foto successiva"
             >
               <ChevronRight className="w-5 h-5" aria-hidden="true" />
             </button>
+            <h2 id="lightbox-title" className="sr-only">{photos[active].alt}</h2>
             <motion.img
               key={active}
               initial={{ scale: 0.9, opacity: 0 }}
@@ -235,10 +254,32 @@ export function Gallery() {
               exit={{ scale: 0.9, opacity: 0 }}
               src={photos[active].src}
               alt={photos[active].alt}
-              className="max-h-[90vh] max-w-[95vw] rounded-xl neon-border object-contain"
+              onClick={(e) => e.stopPropagation()}
+              className="max-h-[85vh] max-w-[95vw] rounded-xl neon-border object-contain touch-pan-y"
             />
+            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex sm:hidden items-center gap-3">
+              <button
+                type="button"
+                onClick={(e) => { e.stopPropagation(); setActive((prev) => (prev !== null && prev > 0 ? prev - 1 : photos.length - 1)); }}
+                aria-label="Foto precedente"
+                className="w-11 h-11 rounded-full bg-background/80 backdrop-blur-md border border-gold/40 flex items-center justify-center text-gold focus:outline-none focus-visible:ring-2 focus-visible:ring-gold"
+              >
+                <ChevronLeft className="w-5 h-5" aria-hidden="true" />
+              </button>
+              <span id="lightbox-counter" className="text-sm text-gold/90 font-medium tabular-nums" aria-live="polite">
+                {active + 1} / {photos.length}
+              </span>
+              <button
+                type="button"
+                onClick={(e) => { e.stopPropagation(); setActive((prev) => (prev !== null && prev < photos.length - 1 ? prev + 1 : 0)); }}
+                aria-label="Foto successiva"
+                className="w-11 h-11 rounded-full bg-background/80 backdrop-blur-md border border-gold/40 flex items-center justify-center text-gold focus:outline-none focus-visible:ring-2 focus-visible:ring-gold"
+              >
+                <ChevronRight className="w-5 h-5" aria-hidden="true" />
+              </button>
+            </div>
             <p className="sr-only" aria-live="polite">
-              Foto {active + 1} di {photos.length}: {photos[active].alt}
+              Foto {active + 1} di {photos.length}: {photos[active].alt}. Scorri a destra o sinistra per cambiare foto.
             </p>
           </motion.div>
         )}
