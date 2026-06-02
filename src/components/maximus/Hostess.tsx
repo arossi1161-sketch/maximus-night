@@ -60,8 +60,8 @@ export function Hostess() {
               loading="lazy"
               decoding="async"
               width={1024}
-              height={1216}
-              className="w-full h-[520px] md:h-[640px] object-cover"
+              height={1024}
+              className="w-full h-[520px] md:h-[640px] object-cover object-top"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/20" />
           </motion.div>
