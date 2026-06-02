@@ -1,6 +1,10 @@
 import { motion } from "motion/react";
-import { Sparkles, Lock, Crown } from "lucide-react";
+import { Sparkles, Lock, Crown, MessageCircle } from "lucide-react";
 import hostessImg from "@/assets/hostess.jpg";
+
+const WA_HREF = `https://wa.me/390744000000?text=${encodeURIComponent(
+  "Ciao MAXIMUS! Vorrei informazioni sulle hostess e prenotare una serata."
+)}`;
 
 const cards = [
   {
