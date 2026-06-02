@@ -39,6 +39,10 @@ export function Gallery() {
   const [active, setActive] = useState<number | null>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const dragState = useRef({ down: false, startX: 0, startScroll: 0, moved: false });
+  const lightboxRef = useRef<HTMLDivElement>(null);
+  const closeBtnRef = useRef<HTMLButtonElement>(null);
+  const prevBtnRef = useRef<HTMLButtonElement>(null);
+  const nextBtnRef = useRef<HTMLButtonElement>(null);
 
   const scrollBy = (dir: 1 | -1) => {
     const el = trackRef.current;
@@ -71,8 +75,31 @@ export function Gallery() {
     dragState.current.down = false;
   };
 
+  // Lightbox keyboard navigation
+  useEffect(() => {
+    if (active === null) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setActive(null);
+      } else if (e.key === "ArrowLeft") {
+        setActive((prev) => (prev !== null && prev > 0 ? prev - 1 : photos.length - 1));
+      } else if (e.key === "ArrowRight") {
+        setActive((prev) => (prev !== null && prev < photos.length - 1 ? prev + 1 : 0));
+      }
+    };
+    // Focus trap + initial focus
+    const closeBtn = closeBtnRef.current;
+    if (closeBtn) closeBtn.focus();
+    document.addEventListener("keydown", handleKeyDown);
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = "";
+    };
+  }, [active]);
+
   return (
-    <section id="galleria" className="relative py-24 md:py-32 overflow-hidden">
+    <section id="galleria" className="relative py-24 md:py-32 overflow-hidden" aria-label="Galleria fotografica">
       <div className="max-w-7xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -95,6 +122,10 @@ export function Gallery() {
           onPointerMove={onPointerMove}
           onPointerUp={onPointerUp}
           onPointerCancel={onPointerUp}
+          role="region"
+          aria-roledescription="carosello"
+          aria-label="Carosello fotografico"
+          aria-describedby="carousel-hint"
           className="flex gap-4 md:gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory px-6 pb-4 cursor-grab active:cursor-grabbing select-none touch-pan-x [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         >
           {photos.map((p, i) => (
@@ -109,7 +140,9 @@ export function Gallery() {
               }}
               draggable={false}
               className="group relative shrink-0 snap-center h-56 sm:h-72 md:h-80 w-72 sm:w-96 md:w-[28rem] overflow-hidden rounded-xl neon-border"
-              aria-label={p.alt}
+              aria-label={`Apri in grandezza: ${p.alt}`}
+              aria-roledescription="slide"
+              role="group"
             >
               <picture>
                 <source type="image/webp" srcSet={p.src} />
@@ -127,21 +160,28 @@ export function Gallery() {
             </button>
           ))}
         </div>
+        <p id="carousel-hint" className="sr-only">
+          Usa i pulsanti precedente e successivo per scorrere le foto, oppure le frecce da tastiera quando la lightbox è aperta.
+        </p>
 
-        <div className="flex items-center justify-center gap-4 mt-8">
+        <div className="flex items-center justify-center gap-4 mt-8" role="group" aria-label="Controlli carosello">
           <button
+            ref={prevBtnRef}
             onClick={() => scrollBy(-1)}
             aria-label="Foto precedenti"
+            aria-controls="gallery-track"
             className="w-12 h-12 rounded-full neon-border flex items-center justify-center text-gold hover:bg-gold/10 transition"
           >
-            <ChevronLeft className="w-5 h-5" />
+            <ChevronLeft className="w-5 h-5" aria-hidden="true" />
           </button>
           <button
+            ref={nextBtnRef}
             onClick={() => scrollBy(1)}
             aria-label="Foto successive"
+            aria-controls="gallery-track"
             className="w-12 h-12 rounded-full neon-border flex items-center justify-center text-gold hover:bg-gold/10 transition"
           >
-            <ChevronRight className="w-5 h-5" />
+            <ChevronRight className="w-5 h-5" aria-hidden="true" />
           </button>
         </div>
       </div>
@@ -149,6 +189,10 @@ export function Gallery() {
       <AnimatePresence>
         {active !== null && (
           <motion.div
+            ref={lightboxRef}
+            role="dialog"
+            aria-modal="true"
+            aria-label={`Lightbox: ${photos[active].alt}`}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -156,13 +200,29 @@ export function Gallery() {
             onClick={() => setActive(null)}
           >
             <button
-              className="absolute top-6 right-6 text-gold hover:scale-110 transition"
+              ref={closeBtnRef}
+              className="absolute top-6 right-6 text-gold hover:scale-110 transition focus:outline-none focus:ring-2 focus:ring-gold rounded-sm"
               onClick={() => setActive(null)}
-              aria-label="Chiudi"
+              aria-label="Chiudi lightbox"
             >
-              <X size={32} />
+              <X size={32} aria-hidden="true" />
+            </button>
+            <button
+              className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full neon-border flex items-center justify-center text-gold hover:bg-gold/10 transition focus:outline-none focus:ring-2 focus:ring-gold"
+              onClick={(e) => { e.stopPropagation(); setActive((prev) => (prev !== null && prev > 0 ? prev - 1 : photos.length - 1)); }}
+              aria-label="Foto precedente"
+            >
+              <ChevronLeft className="w-5 h-5" aria-hidden="true" />
+            </button>
+            <button
+              className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full neon-border flex items-center justify-center text-gold hover:bg-gold/10 transition focus:outline-none focus:ring-2 focus:ring-gold"
+              onClick={(e) => { e.stopPropagation(); setActive((prev) => (prev !== null && prev < photos.length - 1 ? prev + 1 : 0)); }}
+              aria-label="Foto successiva"
+            >
+              <ChevronRight className="w-5 h-5" aria-hidden="true" />
             </button>
             <motion.img
+              key={active}
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
@@ -170,6 +230,9 @@ export function Gallery() {
               alt={photos[active].alt}
               className="max-h-[90vh] max-w-[95vw] rounded-xl neon-border object-contain"
             />
+            <p className="sr-only" aria-live="polite">
+              Foto {active + 1} di {photos.length}: {photos[active].alt}
+            </p>
           </motion.div>
         )}
       </AnimatePresence>
