@@ -60,19 +60,20 @@ export function Gallery() {
       startScroll: el.scrollLeft,
       moved: false,
     };
-    el.setPointerCapture(e.pointerId);
   };
   const onPointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
     const el = trackRef.current;
     if (!el || !dragState.current.down) return;
     const dx = e.clientX - dragState.current.startX;
-    if (Math.abs(dx) > 4) dragState.current.moved = true;
-    el.scrollLeft = dragState.current.startScroll - dx;
+    if (Math.abs(dx) > 6) {
+      dragState.current.moved = true;
+      el.scrollLeft = dragState.current.startScroll - dx;
+    }
   };
-  const onPointerUp = (e: React.PointerEvent<HTMLDivElement>) => {
-    const el = trackRef.current;
-    if (el && el.hasPointerCapture(e.pointerId)) el.releasePointerCapture(e.pointerId);
+  const onPointerUp = () => {
     dragState.current.down = false;
+    // Reset moved on next tick so the immediate click handler can read it
+    setTimeout(() => { dragState.current.moved = false; }, 0);
   };
 
   // Lightbox keyboard navigation
