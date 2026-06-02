@@ -3,6 +3,7 @@ import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
 import { CookieConsent } from "./CookieConsent";
 import { LegalModal, PrivacyContent, CookieContent, TermsContent } from "./LegalModal";
+import { WhatsAppFab } from "./WhatsAppFab";
 
 export function SiteLayout({ children }: { children: ReactNode }) {
   const [privacy, setPrivacy] = useState(false);
@@ -14,6 +15,7 @@ export function SiteLayout({ children }: { children: ReactNode }) {
     <div className="dark min-h-screen bg-background text-foreground">
       <Navbar />
       <main>{children}</main>
+      <WhatsAppFab />
       <Footer
         onOpenPrivacy={() => setPrivacy(true)}
         onOpenCookies={() => setCookies(true)}

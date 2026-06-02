@@ -1,15 +1,29 @@
+import { lazy, Suspense } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { Hero } from "@/components/maximus/Hero";
 import { About } from "@/components/maximus/About";
-import { Experience } from "@/components/maximus/Experience";
-import { Gallery } from "@/components/maximus/Gallery";
-import { Hostess } from "@/components/maximus/Hostess";
-import { Contact } from "@/components/maximus/Contact";
-import { ReservationForm } from "@/components/maximus/ReservationForm";
 import { SiteLayout } from "@/components/maximus/SiteLayout";
 import ogImage from "@/assets/photos/p7.jpg";
 import heroWebp1024 from "@/assets/photos/p7-1024.webp";
 import heroWebp640 from "@/assets/photos/p7-640.webp";
+
+const Experience = lazy(() =>
+  import("@/components/maximus/Experience").then((m) => ({ default: m.Experience })),
+);
+const Gallery = lazy(() =>
+  import("@/components/maximus/Gallery").then((m) => ({ default: m.Gallery })),
+);
+const Hostess = lazy(() =>
+  import("@/components/maximus/Hostess").then((m) => ({ default: m.Hostess })),
+);
+const ReservationForm = lazy(() =>
+  import("@/components/maximus/ReservationForm").then((m) => ({ default: m.ReservationForm })),
+);
+const Contact = lazy(() =>
+  import("@/components/maximus/Contact").then((m) => ({ default: m.Contact })),
+);
+
+const SectionFallback = () => <div className="min-h-[400px]" aria-hidden="true" />;
 
 const SITE = "https://maximus-night.lovable.app";
 const TITLE = "MAXIMUS — Luxury Night Club a Stroncone, Terni";
@@ -98,30 +112,32 @@ function HomePage() {
     <SiteLayout>
       <Hero />
       <About />
-      <section id="esperienze">
-        <Experience />
-      </section>
-      <Gallery />
-      <Hostess />
-      <section id="prenota" className="relative py-24 md:py-32 px-6">
-        <div className="max-w-4xl mx-auto text-center mb-12">
-          <p className="text-xs tracking-[0.5em] text-gold uppercase mb-4">Prenota</p>
-          <h2 className="font-display text-4xl md:text-6xl font-bold">
-            Assicurati il tuo <span className="text-gold-gradient">posto</span>
-          </h2>
-          <div className="divider-gold w-32 mx-auto mt-6" />
-          <p className="text-muted-foreground mt-6">
-            Compila il form: confermiamo disponibilità e dettagli direttamente con te.
-          </p>
-        </div>
+      <Suspense fallback={<SectionFallback />}>
+        <section id="esperienze">
+          <Experience />
+        </section>
+        <Gallery />
+        <Hostess />
+        <section id="prenota" className="relative py-24 md:py-32 px-6">
+          <div className="max-w-4xl mx-auto text-center mb-12">
+            <p className="text-xs tracking-[0.5em] text-gold uppercase mb-4">Prenota</p>
+            <h2 className="font-display text-4xl md:text-6xl font-bold">
+              Assicurati il tuo <span className="text-gold-gradient">posto</span>
+            </h2>
+            <div className="divider-gold w-32 mx-auto mt-6" />
+            <p className="text-muted-foreground mt-6">
+              Compila il form: confermiamo disponibilità e dettagli direttamente con te.
+            </p>
+          </div>
 
-        <div className="max-w-3xl mx-auto">
-          <ReservationForm />
-        </div>
-      </section>
-      <section id="contatti">
-        <Contact />
-      </section>
+          <div className="max-w-3xl mx-auto">
+            <ReservationForm />
+          </div>
+        </section>
+        <section id="contatti">
+          <Contact />
+        </section>
+      </Suspense>
     </SiteLayout>
   );
 }
