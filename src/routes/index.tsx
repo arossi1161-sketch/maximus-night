@@ -16,8 +16,10 @@ const Gallery = lazy(() =>
 const Hostess = lazy(() =>
   import("@/components/maximus/Hostess").then((m) => ({ default: m.Hostess })),
 );
-const ReservationForm = lazy(() =>
-  import("@/components/maximus/ReservationForm").then((m) => ({ default: m.ReservationForm })),
+const JobApplicationForm = lazy(() =>
+  import("@/components/maximus/JobApplicationForm").then((m) => ({
+    default: m.JobApplicationForm,
+  })),
 );
 const Contact = lazy(() =>
   import("@/components/maximus/Contact").then((m) => ({ default: m.Contact })),
