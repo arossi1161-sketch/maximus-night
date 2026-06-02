@@ -113,10 +113,11 @@ export function Contact({ showForm = true }: { showForm?: boolean }) {
             <iframe
               title="Mappa MAXIMUS — Stroncone (TR)"
               src={`https://www.google.com/maps?q=${mapsQ}&output=embed`}
-              className="w-full h-full min-h-[360px] grayscale contrast-125"
+              className="w-full h-full min-h-[360px]"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
             />
+
           </motion.div>
         </div>
 

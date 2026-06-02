@@ -4,23 +4,23 @@ import { Diamond, Star, Wine, Moon } from "lucide-react";
 const features = [
   {
     icon: Diamond,
-    title: "Atmosfera Esclusiva",
-    desc: "Un ambiente riservato dove ogni dettaglio è curato.",
+    title: "Identità riconoscibile",
+    desc: "Un format diverso dai soliti club della provincia: meno ressa, più carattere.",
   },
   {
     icon: Star,
-    title: "Intrattenimento Premium",
-    desc: "Artisti, DJ e performance di livello internazionale.",
+    title: "Line-up selezionata",
+    desc: "DJ e live act scelti uno per uno, senza serate copia-incolla.",
   },
   {
     icon: Wine,
-    title: "Ambiente Elegante",
-    desc: "Design raffinato, sedute lounge e luci d'atmosfera.",
+    title: "Drink fatti bene",
+    desc: "Spirits di livello, ricette firmate e bicchieri sempre pieni al punto giusto.",
   },
   {
     icon: Moon,
-    title: "Notti Indimenticabili",
-    desc: "Esperienze che restano impresse per sempre.",
+    title: "A due passi da Terni",
+    desc: "Facile da raggiungere da tutta l'Umbria, parcheggio comodo davanti al locale.",
   },
 ];
 
@@ -38,12 +38,13 @@ export function WhyUs() {
           transition={{ duration: 0.8 }}
           className="text-center mb-20"
         >
-          <p className="text-xs tracking-[0.5em] text-gold uppercase mb-4">Why Choose Us</p>
+          <p className="text-xs tracking-[0.5em] text-gold uppercase mb-4">Perché Noi</p>
           <h2 className="font-display text-5xl md:text-6xl font-bold">
-            Perché Scegliere <span className="text-gold-gradient">MAXIMUS</span>
+            Cosa rende <span className="text-gold-gradient">MAXIMUS</span> diverso
           </h2>
           <div className="divider-gold w-32 mx-auto mt-6" />
         </motion.div>
+
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {features.map((f, i) => (

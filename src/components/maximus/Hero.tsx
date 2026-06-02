@@ -42,7 +42,7 @@ export function Hero() {
             transition={{ delay: 0.2, duration: 0.8 }}
             className="text-xs sm:text-sm tracking-[0.5em] text-gold/80 uppercase mb-6"
           >
-            ★ Luxury Night Club · Stroncone (TR) ★
+            ★ Night Club · Stroncone · Terni ★
           </motion.p>
 
           <motion.h1
@@ -67,7 +67,7 @@ export function Hero() {
             transition={{ delay: 1.1, duration: 0.8 }}
             className="text-base sm:text-xl text-foreground/90 tracking-[0.3em] uppercase mb-4"
           >
-            Locale Esclusivo · Terni
+            La tua notte, alle porte di Terni
           </motion.p>
 
           <motion.p
@@ -76,8 +76,9 @@ export function Hero() {
             transition={{ delay: 1.3, duration: 0.8 }}
             className="text-base sm:text-lg italic text-muted-foreground max-w-2xl mx-auto mb-10"
           >
-            "Musica, atmosfera e notti indimenticabili nel cuore dell'Umbria."
+            "Dove la musica accende l'Umbria fino all'alba."
           </motion.p>
+
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
