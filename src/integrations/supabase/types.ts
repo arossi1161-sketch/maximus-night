@@ -41,6 +41,36 @@ export type Database = {
         }
         Relationships: []
       }
+      job_applications: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          message: string | null
+          name: string
+          phone: string
+          role: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          message?: string | null
+          name: string
+          phone: string
+          role: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          message?: string | null
+          name?: string
+          phone?: string
+          role?: string
+        }
+        Relationships: []
+      }
       reservations: {
         Row: {
           created_at: string

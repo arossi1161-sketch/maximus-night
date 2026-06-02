@@ -1,9 +1,7 @@
-import { useState } from "react";
 import { motion } from "motion/react";
-import { MapPin, Phone, Clock, Navigation, Mail, Loader2 } from "lucide-react";
+import { MapPin, Phone, Clock, Navigation, Mail } from "lucide-react";
 
 export function Contact() {
-  const [mapLoaded, setMapLoaded] = useState(false);
   const address = "Stroncone, 05039 Terni (TR), Italia";
   const mapsQ = encodeURIComponent(address);
   const mapsLink = "https://maps.app.goo.gl/QvJPiSrK8tYekzjL7";
@@ -108,36 +106,15 @@ export function Contact() {
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            className="relative group rounded-2xl overflow-hidden neon-border-blue bg-black min-h-[320px] sm:min-h-[400px] md:min-h-[480px] lg:min-h-full"
+            transition={{ duration: 0.5 }}
+            className="relative rounded-2xl overflow-hidden border border-gold/20 bg-black min-h-[320px] sm:min-h-[400px] md:min-h-[480px] lg:min-h-full"
           >
-            <div className="pointer-events-none absolute inset-0 z-20 ring-1 ring-inset ring-gold/20 rounded-2xl" />
-            <div className="pointer-events-none absolute inset-0 z-20 bg-gradient-to-tr from-neon-purple/20 via-transparent to-neon-blue/15 mix-blend-screen transition-opacity duration-500 group-hover:opacity-60" />
-            <div className="pointer-events-none absolute -inset-px z-20 rounded-2xl shadow-[inset_0_0_60px_rgba(0,0,0,0.6)]" />
-
-            {!mapLoaded && (
-              <div
-                className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-4 bg-gradient-to-br from-black via-background to-black"
-                aria-hidden="true"
-              >
-                <div className="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_center,theme(colors.gold/30),transparent_60%)]" />
-                <div className="relative w-16 h-16 rounded-full bg-gold/10 flex items-center justify-center neon-border">
-                  <MapPin className="w-6 h-6 text-gold animate-pulse" />
-                </div>
-                <div className="relative flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-muted-foreground">
-                  <Loader2 className="w-3 h-3 animate-spin" />
-                  Caricamento mappa…
-                </div>
-              </div>
-            )}
-
             <iframe
               title="Mappa MAXIMUS — Stroncone (TR)"
               src={`https://www.google.com/maps?q=${mapsQ}&output=embed`}
-              className="relative w-full h-full min-h-[320px] sm:min-h-[400px] md:min-h-[480px] lg:min-h-[520px]"
+              className="block w-full h-full min-h-[320px] sm:min-h-[400px] md:min-h-[480px] lg:min-h-[520px] border-0"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              onLoad={() => setMapLoaded(true)}
             />
           </motion.div>
         </div>
