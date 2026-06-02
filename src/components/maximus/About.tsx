@@ -1,6 +1,4 @@
 import { motion } from "motion/react";
-import aboutWebp from "@/assets/photos/p7.webp";
-import about from "@/assets/photos/p7.jpg";
 
 export function About() {
   return (
@@ -8,65 +6,34 @@ export function About() {
       <div className="absolute top-1/4 -left-32 h-96 w-96 rounded-full bg-neon-purple/10 blur-3xl" />
       <div className="absolute bottom-0 right-0 h-96 w-96 rounded-full bg-neon-blue/10 blur-3xl" />
 
-      <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <div className="relative max-w-4xl mx-auto text-center">
         <motion.div
-          initial={{ opacity: 0, x: -40 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8 }}
-          className="relative"
-        >
-          <div className="absolute -inset-4 bg-gold/10 blur-2xl rounded-3xl" />
-          <div className="relative overflow-hidden rounded-2xl neon-border">
-            <picture>
-              <source type="image/webp" srcSet={aboutWebp} />
-              <img
-                src={about}
-                alt="Bar e sala interna del MAXIMUS Club a Stroncone"
-                loading="lazy"
-                decoding="async"
-                width={1204}
-                height={1600}
-                className="w-full h-[420px] md:h-[600px] object-cover hover:scale-105 transition-transform duration-[2s]"
-              />
-            </picture>
-            <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
-          </div>
-          <div className="absolute -bottom-6 -right-6 hidden md:block">
-            <div className="glass-card neon-border-blue p-6 rounded-xl">
-              <p className="font-display text-3xl text-gold-gradient">10+</p>
-              <p className="text-xs uppercase tracking-widest text-muted-foreground mt-1">
-                Anni di Attività
-              </p>
-            </div>
-          </div>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, x: 40 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8, delay: 0.1 }}
         >
           <p className="text-xs tracking-[0.5em] text-gold uppercase mb-4">Il Locale</p>
           <h2 className="font-display text-4xl md:text-6xl font-bold mb-6 leading-tight">
-            Benvenuto al <span className="text-gold-gradient">MAXIMUS</span>
+            La notte secondo <span className="text-gold-gradient">MAXIMUS</span>
           </h2>
-          <div className="divider-gold w-24 mb-8" />
+          <div className="divider-gold w-24 mx-auto mb-8" />
           <p className="text-lg text-foreground/85 mb-6 leading-relaxed">
-            Nel cuore di Stroncone, in provincia di Terni, il MAXIMUS è il punto di riferimento per
-            chi cerca un'esperienza notturna raffinata, intima e fuori dagli schemi.
+            A pochi minuti da Terni, fra le colline di Stroncone, abbiamo creato uno spazio dove
+            la musica detta il ritmo e l'eleganza fa il resto. Il MAXIMUS non è una discoteca
+            qualunque: è il luogo in cui scegliere come vivere la tua notte.
           </p>
-          <p className="text-lg text-muted-foreground mb-10 leading-relaxed">
-            Sale ampie, luci d'atmosfera, un bar curato e un servizio attento: ogni dettaglio è
-            pensato per regalarvi serate da ricordare.
+          <p className="text-lg text-muted-foreground mb-12 leading-relaxed">
+            Lounge intimi, una console che alterna i nomi più interessanti della scena umbra,
+            una drink list firmata dai nostri bartender e un servizio al tavolo pensato per farti
+            sentire ospite, non cliente.
           </p>
 
-          <div className="grid grid-cols-3 gap-6">
+          <div className="grid grid-cols-3 gap-6 max-w-xl mx-auto">
             {[
-              { n: "120+", l: "Eventi" },
-              { n: "150", l: "Posti" },
-              { n: "10+", l: "Anni" },
+              { n: "120+", l: "Serate l'anno" },
+              { n: "150", l: "Posti riservati" },
+              { n: "10+", l: "Anni nel cuore di Terni" },
             ].map((s) => (
               <div key={s.l} className="text-center">
                 <p className="font-display text-3xl text-gold-gradient">{s.n}</p>
