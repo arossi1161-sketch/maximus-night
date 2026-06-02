@@ -115,7 +115,6 @@ export function Contact() {
               className="block w-full h-full min-h-[320px] sm:min-h-[400px] md:min-h-[480px] lg:min-h-[520px] border-0"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              onLoad={() => setMapLoaded(true)}
             />
           </motion.div>
         </div>
