@@ -11,14 +11,25 @@ export function WhatsAppFab() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Contattaci su WhatsApp"
-      className="fixed bottom-5 right-5 z-50 inline-flex items-center justify-center w-14 h-14 rounded-full hover:scale-105 active:scale-95 transition-transform focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#25D366] focus-visible:ring-offset-2 focus-visible:ring-offset-background drop-shadow-[0_8px_20px_rgba(37,211,102,0.5)]"
+      className="fixed bottom-5 right-5 z-50 inline-flex items-center justify-center
+        w-16 h-16
+        rounded-full
+        bg-white
+        border-2 border-[#25D366]
+        shadow-[0_4px_20px_rgba(37,211,102,0.45)]
+        hover:shadow-[0_6px_28px_rgba(37,211,102,0.65)]
+        hover:scale-110
+        active:scale-95
+        transition-all duration-200
+        focus-visible:outline-none
+        focus-visible:ring-[3px] focus-visible:ring-[#25D366] focus-visible:ring-offset-2 focus-visible:ring-offset-background"
     >
       <img
         src={waLogo.url}
         alt=""
-        width={56}
-        height={56}
-        className="w-full h-full object-contain"
+        width={64}
+        height={64}
+        className="w-12 h-12 object-contain"
       />
     </a>
   );
