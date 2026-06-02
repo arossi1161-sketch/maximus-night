@@ -1,6 +1,10 @@
 import { Instagram, Facebook, Twitter, Music2 } from "lucide-react";
 
-export function Footer({ onOpenPrivacy, onOpenCookies, onOpenTerms }: {
+export function Footer({
+  onOpenPrivacy,
+  onOpenCookies,
+  onOpenTerms,
+}: {
   onOpenPrivacy: () => void;
   onOpenCookies: () => void;
   onOpenTerms: () => void;
@@ -48,9 +52,15 @@ export function Footer({ onOpenPrivacy, onOpenCookies, onOpenTerms }: {
         <div className="flex flex-col md:flex-row justify-between items-center gap-6 text-xs text-muted-foreground">
           <p>© {new Date().getFullYear()} MAXIMUS Luxury Night Club. Tutti i diritti riservati.</p>
           <div className="flex flex-wrap gap-6 justify-center">
-            <button onClick={onOpenPrivacy} className="hover:text-gold transition">Privacy Policy</button>
-            <button onClick={onOpenCookies} className="hover:text-gold transition">Cookie Policy</button>
-            <button onClick={onOpenTerms} className="hover:text-gold transition">Termini</button>
+            <button onClick={onOpenPrivacy} className="hover:text-gold transition">
+              Privacy Policy
+            </button>
+            <button onClick={onOpenCookies} className="hover:text-gold transition">
+              Cookie Policy
+            </button>
+            <button onClick={onOpenTerms} className="hover:text-gold transition">
+              Termini
+            </button>
           </div>
           <p>
             Powered by{" "}

@@ -50,8 +50,13 @@ export function ContactForm() {
       >
         <CheckCircle2 className="w-14 h-14 text-gold mx-auto mb-4" />
         <h3 className="font-display text-2xl mb-2 text-gold-gradient">Grazie!</h3>
-        <p className="text-muted-foreground">Abbiamo ricevuto il tuo messaggio. Ti risponderemo al più presto.</p>
-        <button onClick={() => setStatus("idle")} className="mt-6 text-sm text-gold hover:underline">
+        <p className="text-muted-foreground">
+          Abbiamo ricevuto il tuo messaggio. Ti risponderemo al più presto.
+        </p>
+        <button
+          onClick={() => setStatus("idle")}
+          className="mt-6 text-sm text-gold hover:underline"
+        >
           Invia un altro messaggio
         </button>
       </motion.div>
@@ -59,7 +64,11 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={submit} className="glass-card neon-border rounded-2xl p-6 md:p-10 space-y-5" noValidate>
+    <form
+      onSubmit={submit}
+      className="glass-card neon-border rounded-2xl p-6 md:p-10 space-y-5"
+      noValidate
+    >
       <h3 className="font-display text-2xl mb-2">Scrivici un Messaggio</h3>
       <div className="grid sm:grid-cols-2 gap-5">
         <Field label="Nome *" error={errors.name}>
@@ -112,17 +121,31 @@ export function ContactForm() {
         disabled={status === "loading"}
         className="btn-neon-gold w-full px-8 py-4 rounded-md text-sm inline-flex items-center justify-center gap-3 disabled:opacity-60"
       >
-        {status === "loading" ? <Loader2 className="w-4 h-4 animate-spin" /> : <Send className="w-4 h-4" />}
+        {status === "loading" ? (
+          <Loader2 className="w-4 h-4 animate-spin" />
+        ) : (
+          <Send className="w-4 h-4" />
+        )}
         Invia Messaggio
       </button>
     </form>
   );
 }
 
-function Field({ label, error, children }: { label: string; error?: string; children: React.ReactNode }) {
+function Field({
+  label,
+  error,
+  children,
+}: {
+  label: string;
+  error?: string;
+  children: React.ReactNode;
+}) {
   return (
     <label className="block">
-      <span className="text-xs uppercase tracking-widest text-muted-foreground mb-2 block">{label}</span>
+      <span className="text-xs uppercase tracking-widest text-muted-foreground mb-2 block">
+        {label}
+      </span>
       {children}
       {error && <span className="text-xs text-red-400 mt-1 block">{error}</span>}
     </label>

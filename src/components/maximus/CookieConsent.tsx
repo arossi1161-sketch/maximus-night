@@ -102,8 +102,8 @@ export function CookieConsent({
                   La tua privacy è importante
                 </h3>
                 <p className="text-sm text-muted-foreground mt-2 leading-relaxed">
-                  Utilizziamo cookie tecnici necessari e, previo tuo consenso, cookie di analisi
-                  e marketing per migliorare la tua esperienza, ai sensi del GDPR (Reg. UE 2016/679).
+                  Utilizziamo cookie tecnici necessari e, previo tuo consenso, cookie di analisi e
+                  marketing per migliorare la tua esperienza, ai sensi del GDPR (Reg. UE 2016/679).
                   Puoi accettare, rifiutare o personalizzare le tue preferenze in qualsiasi momento.
                 </p>
               </div>
@@ -133,14 +133,23 @@ export function CookieConsent({
             )}
 
             <div className="flex flex-col sm:flex-row gap-3 mt-5">
-              <button onClick={acceptAll} className="btn-neon-gold px-6 py-3 rounded-md text-xs flex-1">
+              <button
+                onClick={acceptAll}
+                className="btn-neon-gold px-6 py-3 rounded-md text-xs flex-1"
+              >
                 Accetta Tutti
               </button>
-              <button onClick={rejectAll} className="btn-neon-outline px-6 py-3 rounded-md text-xs flex-1">
+              <button
+                onClick={rejectAll}
+                className="btn-neon-outline px-6 py-3 rounded-md text-xs flex-1"
+              >
                 Rifiuta Tutti
               </button>
               {showPrefs ? (
-                <button onClick={saveCustom} className="btn-neon-outline px-6 py-3 rounded-md text-xs flex-1">
+                <button
+                  onClick={saveCustom}
+                  className="btn-neon-outline px-6 py-3 rounded-md text-xs flex-1"
+                >
                   Salva Preferenze
                 </button>
               ) : (

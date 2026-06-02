@@ -20,7 +20,11 @@ export const Route = createFileRoute("/")({
     meta: [
       { title: TITLE },
       { name: "description", content: DESC },
-      { name: "keywords", content: "discoteca Terni, night club Stroncone, locale notturno Umbria, MAXIMUS, prenotazione tavoli Terni, eventi Terni" },
+      {
+        name: "keywords",
+        content:
+          "discoteca Terni, night club Stroncone, locale notturno Umbria, MAXIMUS, prenotazione tavoli Terni, eventi Terni",
+      },
       { property: "og:title", content: TITLE },
       { property: "og:description", content: DESC },
       { property: "og:type", content: "website" },

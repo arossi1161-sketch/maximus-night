@@ -19,7 +19,11 @@ export function SiteLayout({ children }: { children: ReactNode }) {
         onOpenCookies={() => setCookies(true)}
         onOpenTerms={() => setTerms(true)}
       />
-      <CookieConsent key={reopenConsent} forceOpen={reopenConsent > 0} onClose={() => setReopenConsent(0)} />
+      <CookieConsent
+        key={reopenConsent}
+        forceOpen={reopenConsent > 0}
+        onClose={() => setReopenConsent(0)}
+      />
       <LegalModal open={privacy} onClose={() => setPrivacy(false)} title="Privacy Policy">
         <PrivacyContent />
       </LegalModal>
@@ -38,7 +42,15 @@ export function SiteLayout({ children }: { children: ReactNode }) {
   );
 }
 
-export function PageHeader({ eyebrow, title, subtitle }: { eyebrow: string; title: ReactNode; subtitle?: string }) {
+export function PageHeader({
+  eyebrow,
+  title,
+  subtitle,
+}: {
+  eyebrow: string;
+  title: ReactNode;
+  subtitle?: string;
+}) {
   return (
     <section className="relative pt-32 pb-12 px-6 text-center overflow-hidden">
       <div className="absolute -top-20 left-1/2 -translate-x-1/2 h-72 w-72 rounded-full bg-gold/10 blur-3xl" />

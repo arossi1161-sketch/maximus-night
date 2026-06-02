@@ -2,10 +2,26 @@ import { motion } from "motion/react";
 import { Diamond, Star, Wine, Moon } from "lucide-react";
 
 const features = [
-  { icon: Diamond, title: "Atmosfera Esclusiva", desc: "Un ambiente riservato dove ogni dettaglio è curato." },
-  { icon: Star, title: "Intrattenimento Premium", desc: "Artisti, DJ e performance di livello internazionale." },
-  { icon: Wine, title: "Ambiente Elegante", desc: "Design raffinato, sedute lounge e luci d'atmosfera." },
-  { icon: Moon, title: "Notti Indimenticabili", desc: "Esperienze che restano impresse per sempre." },
+  {
+    icon: Diamond,
+    title: "Atmosfera Esclusiva",
+    desc: "Un ambiente riservato dove ogni dettaglio è curato.",
+  },
+  {
+    icon: Star,
+    title: "Intrattenimento Premium",
+    desc: "Artisti, DJ e performance di livello internazionale.",
+  },
+  {
+    icon: Wine,
+    title: "Ambiente Elegante",
+    desc: "Design raffinato, sedute lounge e luci d'atmosfera.",
+  },
+  {
+    icon: Moon,
+    title: "Notti Indimenticabili",
+    desc: "Esperienze che restano impresse per sempre.",
+  },
 ];
 
 export function WhyUs() {
@@ -22,9 +38,7 @@ export function WhyUs() {
           transition={{ duration: 0.8 }}
           className="text-center mb-20"
         >
-          <p className="text-xs tracking-[0.5em] text-gold uppercase mb-4">
-            Why Choose Us
-          </p>
+          <p className="text-xs tracking-[0.5em] text-gold uppercase mb-4">Why Choose Us</p>
           <h2 className="font-display text-5xl md:text-6xl font-bold">
             Perché Scegliere <span className="text-gold-gradient">MAXIMUS</span>
           </h2>

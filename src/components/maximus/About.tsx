@@ -48,22 +48,18 @@ export function About() {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, delay: 0.1 }}
         >
-          <p className="text-xs tracking-[0.5em] text-gold uppercase mb-4">
-            Il Locale
-          </p>
+          <p className="text-xs tracking-[0.5em] text-gold uppercase mb-4">Il Locale</p>
           <h2 className="font-display text-4xl md:text-6xl font-bold mb-6 leading-tight">
-            Benvenuto al{" "}
-            <span className="text-gold-gradient">MAXIMUS</span>
+            Benvenuto al <span className="text-gold-gradient">MAXIMUS</span>
           </h2>
           <div className="divider-gold w-24 mb-8" />
           <p className="text-lg text-foreground/85 mb-6 leading-relaxed">
-            Nel cuore di Stroncone, in provincia di Terni, il MAXIMUS è il punto
-            di riferimento per chi cerca un'esperienza notturna raffinata,
-            intima e fuori dagli schemi.
+            Nel cuore di Stroncone, in provincia di Terni, il MAXIMUS è il punto di riferimento per
+            chi cerca un'esperienza notturna raffinata, intima e fuori dagli schemi.
           </p>
           <p className="text-lg text-muted-foreground mb-10 leading-relaxed">
-            Sale ampie, luci d'atmosfera, un bar curato e un servizio attento:
-            ogni dettaglio è pensato per regalarvi serate da ricordare.
+            Sale ampie, luci d'atmosfera, un bar curato e un servizio attento: ogni dettaglio è
+            pensato per regalarvi serate da ricordare.
           </p>
 
           <div className="grid grid-cols-3 gap-6">

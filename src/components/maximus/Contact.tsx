@@ -43,7 +43,9 @@ export function Contact({ showForm = true }: { showForm?: boolean }) {
                   <MapPin className="w-5 h-5 text-gold" />
                 </div>
                 <div>
-                  <p className="text-xs uppercase tracking-widest text-muted-foreground mb-1">Indirizzo</p>
+                  <p className="text-xs uppercase tracking-widest text-muted-foreground mb-1">
+                    Indirizzo
+                  </p>
                   <p className="text-foreground">{address}</p>
                 </div>
               </div>
@@ -53,7 +55,9 @@ export function Contact({ showForm = true }: { showForm?: boolean }) {
                   <Phone className="w-5 h-5 text-gold" />
                 </div>
                 <div>
-                  <p className="text-xs uppercase tracking-widest text-muted-foreground mb-1">Telefono</p>
+                  <p className="text-xs uppercase tracking-widest text-muted-foreground mb-1">
+                    Telefono
+                  </p>
                   <a href="tel:+390744000000" className="text-foreground hover:text-gold">
                     +39 0744 000 000
                   </a>
@@ -65,7 +69,9 @@ export function Contact({ showForm = true }: { showForm?: boolean }) {
                   <Mail className="w-5 h-5 text-gold" />
                 </div>
                 <div>
-                  <p className="text-xs uppercase tracking-widest text-muted-foreground mb-1">Email</p>
+                  <p className="text-xs uppercase tracking-widest text-muted-foreground mb-1">
+                    Email
+                  </p>
                   <a href="mailto:info@maximusclub.it" className="text-foreground hover:text-gold">
                     info@maximusclub.it
                   </a>
@@ -77,7 +83,9 @@ export function Contact({ showForm = true }: { showForm?: boolean }) {
                   <Clock className="w-5 h-5 text-gold" />
                 </div>
                 <div>
-                  <p className="text-xs uppercase tracking-widest text-muted-foreground mb-1">Orari</p>
+                  <p className="text-xs uppercase tracking-widest text-muted-foreground mb-1">
+                    Orari
+                  </p>
                   <p className="text-foreground">Venerdì – Domenica</p>
                   <p className="text-muted-foreground text-sm">22:00 – 04:00</p>
                 </div>

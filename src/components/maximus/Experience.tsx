@@ -35,9 +35,7 @@ export function Experience() {
           transition={{ duration: 0.8 }}
           className="text-center mb-20"
         >
-          <p className="text-xs tracking-[0.5em] text-gold uppercase mb-4">
-            La Nostra Esperienza
-          </p>
+          <p className="text-xs tracking-[0.5em] text-gold uppercase mb-4">La Nostra Esperienza</p>
           <h2 className="font-display text-5xl md:text-6xl font-bold">
             <span className="text-gold-gradient">L'Esperienza</span> MAXIMUS
           </h2>
@@ -65,9 +63,7 @@ export function Experience() {
                 <h3 className="font-display text-2xl mb-3 text-foreground group-hover:text-gold transition-colors">
                   {it.title}
                 </h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  {it.desc}
-                </p>
+                <p className="text-sm text-muted-foreground leading-relaxed">{it.desc}</p>
               </div>
             </motion.div>
           ))}
