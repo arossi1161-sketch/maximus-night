@@ -67,7 +67,8 @@ export function ReservationForm() {
         <CheckCircle2 className="w-16 h-16 text-gold mx-auto mb-4" />
         <h3 className="font-display text-3xl mb-3 text-gold-gradient">Prenotazione Ricevuta</h3>
         <p className="text-muted-foreground mb-2">
-          Grazie {form.name}! Riceverai una conferma all'indirizzo <span className="text-gold">{form.email}</span>.
+          Grazie {form.name}! Riceverai una conferma all'indirizzo{" "}
+          <span className="text-gold">{form.email}</span>.
         </p>
         <p className="text-sm text-muted-foreground">
           Tavolo per {form.party_size} il {form.reservation_date} alle {form.reservation_time}.
@@ -175,7 +176,11 @@ export function ReservationForm() {
         disabled={status === "loading"}
         className="btn-neon-gold w-full px-8 py-4 rounded-md text-sm inline-flex items-center justify-center gap-3 disabled:opacity-60"
       >
-        {status === "loading" ? <Loader2 className="w-4 h-4 animate-spin" /> : <CalendarDays className="w-4 h-4" />}
+        {status === "loading" ? (
+          <Loader2 className="w-4 h-4 animate-spin" />
+        ) : (
+          <CalendarDays className="w-4 h-4" />
+        )}
         Conferma Prenotazione
       </button>
       <p className="text-xs text-muted-foreground text-center">
@@ -185,10 +190,20 @@ export function ReservationForm() {
   );
 }
 
-function Field({ label, error, children }: { label: string; error?: string; children: React.ReactNode }) {
+function Field({
+  label,
+  error,
+  children,
+}: {
+  label: string;
+  error?: string;
+  children: React.ReactNode;
+}) {
   return (
     <label className="block">
-      <span className="text-xs uppercase tracking-widest text-muted-foreground mb-2 block">{label}</span>
+      <span className="text-xs uppercase tracking-widest text-muted-foreground mb-2 block">
+        {label}
+      </span>
       {children}
       {error && <span className="text-xs text-red-400 mt-1 block">{error}</span>}
     </label>

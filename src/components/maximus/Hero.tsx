@@ -1,16 +1,32 @@
 import { motion } from "motion/react";
-import heroImg from "@/assets/photos/p7.jpg";
+import heroWebp from "@/assets/photos/p7.webp";
+import heroWebp1024 from "@/assets/photos/p7-1024.webp";
+import heroWebp640 from "@/assets/photos/p7-640.webp";
+import heroJpg from "@/assets/photos/p7.jpg";
+import heroJpg1024 from "@/assets/photos/p7-1024.jpg";
+import heroJpg640 from "@/assets/photos/p7-640.jpg";
 
 export function Hero() {
   return (
     <section id="hero" className="relative h-screen w-full overflow-hidden">
-      <img
-        src={heroImg}
-        alt="MAXIMUS — interno del locale"
-        fetchPriority="high"
-        decoding="async"
-        className="absolute inset-0 w-full h-full object-cover"
-      />
+      <picture>
+        <source
+          type="image/webp"
+          srcSet={`${heroWebp640} 640w, ${heroWebp1024} 1024w, ${heroWebp} 1600w`}
+          sizes="100vw"
+        />
+        <img
+          src={heroJpg1024}
+          srcSet={`${heroJpg640} 640w, ${heroJpg1024} 1024w, ${heroJpg} 1600w`}
+          sizes="100vw"
+          alt="MAXIMUS — interno del locale notturno a Stroncone, Terni"
+          fetchPriority="high"
+          decoding="async"
+          width={1204}
+          height={1600}
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+      </picture>
 
       <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/40 to-background" />
       <div className="absolute inset-0 bg-hero-ambient pointer-events-none" />

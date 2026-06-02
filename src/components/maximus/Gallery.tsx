@@ -1,31 +1,40 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { X } from "lucide-react";
-import g1 from "@/assets/photos/p1.jpg";
-import g2 from "@/assets/photos/p2.jpg";
-import g3 from "@/assets/photos/p3.jpg";
-import g4 from "@/assets/photos/p4.jpg";
-import g5 from "@/assets/photos/p5.jpg";
-import g6 from "@/assets/photos/p6.jpg";
-import g7 from "@/assets/photos/p7.jpg";
-import g8 from "@/assets/photos/p8.jpg";
-import g9 from "@/assets/photos/p9.jpg";
-import g10 from "@/assets/photos/p10.jpg";
+import g1 from "@/assets/photos/p1.webp";
+import g2 from "@/assets/photos/p2.webp";
+import g3 from "@/assets/photos/p3.webp";
+import g4 from "@/assets/photos/p4.webp";
+import g5 from "@/assets/photos/p5.webp";
+import g6 from "@/assets/photos/p6.webp";
+import g7 from "@/assets/photos/p7.webp";
+import g8 from "@/assets/photos/p8.webp";
+import g9 from "@/assets/photos/p9.webp";
+import g10 from "@/assets/photos/p10.webp";
+import g1j from "@/assets/photos/p1.jpg";
+import g2j from "@/assets/photos/p2.jpg";
+import g3j from "@/assets/photos/p3.jpg";
+import g4j from "@/assets/photos/p4.jpg";
+import g5j from "@/assets/photos/p5.jpg";
+import g6j from "@/assets/photos/p6.jpg";
+import g7j from "@/assets/photos/p7.jpg";
+import g8j from "@/assets/photos/p8.jpg";
+import g9j from "@/assets/photos/p9.jpg";
+import g10j from "@/assets/photos/p10.jpg";
 
 const photos = [
-  { src: g4, alt: "Sala principale con luci blu" },
-  { src: g7, alt: "Bar centrale del MAXIMUS" },
-  { src: g8, alt: "Salotti in zona lounge" },
-  { src: g1, alt: "Pista da ballo illuminata" },
-  { src: g5, alt: "Area divani privati" },
-  { src: g3, alt: "Sala con scultura" },
-  { src: g6, alt: "Corridoio rosso del locale" },
-  { src: g2, alt: "Sala secondaria" },
-  { src: g9, alt: "Ingresso panoramico" },
-  { src: g10, alt: "Cabine private" },
+  { src: g4, fallback: g4j, alt: "Sala principale con luci blu" },
+  { src: g7, fallback: g7j, alt: "Bar centrale del MAXIMUS" },
+  { src: g8, fallback: g8j, alt: "Salotti in zona lounge" },
+  { src: g1, fallback: g1j, alt: "Pista da ballo illuminata" },
+  { src: g5, fallback: g5j, alt: "Area divani privati" },
+  { src: g3, fallback: g3j, alt: "Sala con scultura" },
+  { src: g6, fallback: g6j, alt: "Corridoio rosso del locale" },
+  { src: g2, fallback: g2j, alt: "Sala secondaria" },
+  { src: g9, fallback: g9j, alt: "Ingresso panoramico" },
+  { src: g10, fallback: g10j, alt: "Cabine private" },
 ];
 
-// Duplicate for seamless marquee loop
 const marquee = [...photos, ...photos];
 
 export function Gallery() {
@@ -52,8 +61,7 @@ export function Gallery() {
       <div
         className="relative w-full overflow-hidden"
         style={{
-          maskImage:
-            "linear-gradient(to right, transparent, black 8%, black 92%, transparent)",
+          maskImage: "linear-gradient(to right, transparent, black 8%, black 92%, transparent)",
           WebkitMaskImage:
             "linear-gradient(to right, transparent, black 8%, black 92%, transparent)",
         }}
@@ -66,13 +74,18 @@ export function Gallery() {
               className="group relative shrink-0 h-56 sm:h-72 md:h-80 w-72 sm:w-96 md:w-[28rem] overflow-hidden rounded-xl neon-border"
               aria-label={p.alt}
             >
-              <img
-                src={p.src}
-                alt={p.alt}
-                loading="lazy"
-                decoding="async"
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-              />
+              <picture>
+                <source type="image/webp" srcSet={p.src} />
+                <img
+                  src={p.fallback}
+                  alt={p.alt}
+                  loading="lazy"
+                  decoding="async"
+                  width={1204}
+                  height={1600}
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+              </picture>
               <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent opacity-60 group-hover:opacity-30 transition-opacity" />
               <div className="absolute inset-0 ring-1 ring-inset ring-gold/0 group-hover:ring-gold/40 transition-all duration-500" />
             </button>
