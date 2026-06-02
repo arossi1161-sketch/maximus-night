@@ -18,13 +18,18 @@ export function About() {
         >
           <div className="absolute -inset-4 bg-gold/10 blur-2xl rounded-3xl" />
           <div className="relative overflow-hidden rounded-2xl neon-border">
-            <img
-              src={about}
-              alt="Bar e sala interna del MAXIMUS Club a Stroncone"
-              loading="lazy"
-              decoding="async"
-              className="w-full h-[420px] md:h-[600px] object-cover hover:scale-105 transition-transform duration-[2s]"
-            />
+            <picture>
+              <source type="image/webp" srcSet={aboutWebp} />
+              <img
+                src={about}
+                alt="Bar e sala interna del MAXIMUS Club a Stroncone"
+                loading="lazy"
+                decoding="async"
+                width={1204}
+                height={1600}
+                className="w-full h-[420px] md:h-[600px] object-cover hover:scale-105 transition-transform duration-[2s]"
+              />
+            </picture>
             <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
           </div>
           <div className="absolute -bottom-6 -right-6 hidden md:block">
