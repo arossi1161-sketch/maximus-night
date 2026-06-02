@@ -38,12 +38,37 @@ const photos = [
 export function Gallery() {
   const [active, setActive] = useState<number | null>(null);
   const trackRef = useRef<HTMLDivElement>(null);
+  const dragState = useRef({ down: false, startX: 0, startScroll: 0, moved: false });
 
   const scrollBy = (dir: 1 | -1) => {
     const el = trackRef.current;
     if (!el) return;
     const amount = Math.min(el.clientWidth * 0.9, 600) * dir;
     el.scrollBy({ left: amount, behavior: "smooth" });
+  };
+
+  const onPointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+    const el = trackRef.current;
+    if (!el || e.pointerType === "touch") return;
+    dragState.current = {
+      down: true,
+      startX: e.clientX,
+      startScroll: el.scrollLeft,
+      moved: false,
+    };
+    el.setPointerCapture(e.pointerId);
+  };
+  const onPointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    const el = trackRef.current;
+    if (!el || !dragState.current.down) return;
+    const dx = e.clientX - dragState.current.startX;
+    if (Math.abs(dx) > 4) dragState.current.moved = true;
+    el.scrollLeft = dragState.current.startScroll - dx;
+  };
+  const onPointerUp = (e: React.PointerEvent<HTMLDivElement>) => {
+    const el = trackRef.current;
+    if (el && el.hasPointerCapture(e.pointerId)) el.releasePointerCapture(e.pointerId);
+    dragState.current.down = false;
   };
 
   return (
@@ -66,12 +91,23 @@ export function Gallery() {
       <div className="relative">
         <div
           ref={trackRef}
-          className="flex gap-4 md:gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory px-6 pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          onPointerDown={onPointerDown}
+          onPointerMove={onPointerMove}
+          onPointerUp={onPointerUp}
+          onPointerCancel={onPointerUp}
+          className="flex gap-4 md:gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory px-6 pb-4 cursor-grab active:cursor-grabbing select-none touch-pan-x [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         >
           {photos.map((p, i) => (
             <button
               key={i}
-              onClick={() => setActive(i)}
+              onClick={(e) => {
+                if (dragState.current.moved) {
+                  e.preventDefault();
+                  return;
+                }
+                setActive(i);
+              }}
+              draggable={false}
               className="group relative shrink-0 snap-center h-56 sm:h-72 md:h-80 w-72 sm:w-96 md:w-[28rem] overflow-hidden rounded-xl neon-border"
               aria-label={p.alt}
             >

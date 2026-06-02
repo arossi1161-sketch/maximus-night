@@ -3,6 +3,7 @@ import { Hero } from "@/components/maximus/Hero";
 import { About } from "@/components/maximus/About";
 import { Experience } from "@/components/maximus/Experience";
 import { Gallery } from "@/components/maximus/Gallery";
+import { Hostess } from "@/components/maximus/Hostess";
 import { Contact } from "@/components/maximus/Contact";
 import { ReservationForm } from "@/components/maximus/ReservationForm";
 import { SiteLayout } from "@/components/maximus/SiteLayout";
@@ -101,6 +102,7 @@ function HomePage() {
         <Experience />
       </section>
       <Gallery />
+      <Hostess />
       <section id="prenota" className="relative py-24 md:py-32 px-6">
         <div className="max-w-4xl mx-auto text-center mb-12">
           <p className="text-xs tracking-[0.5em] text-gold uppercase mb-4">Prenota</p>
