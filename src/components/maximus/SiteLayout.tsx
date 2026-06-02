@@ -15,6 +15,7 @@ export function SiteLayout({ children }: { children: ReactNode }) {
     <div className="dark min-h-screen bg-background text-foreground">
       <Navbar />
       <main>{children}</main>
+      <WhatsAppFab />
       <Footer
         onOpenPrivacy={() => setPrivacy(true)}
         onOpenCookies={() => setCookies(true)}
