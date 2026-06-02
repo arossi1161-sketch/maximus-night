@@ -4,23 +4,23 @@ import { Sparkles, Music, Crown, CalendarHeart } from "lucide-react";
 const items = [
   {
     icon: Sparkles,
-    title: "Atmosfera Elegante",
-    desc: "Interni sofisticati, sedute confortevoli e un ambiente esclusivo.",
+    title: "Mood curato",
+    desc: "Luci, profumi e arredi pensati per accompagnarti dall'aperitivo fino al mattino.",
   },
   {
     icon: Music,
-    title: "Musica di Qualità",
-    desc: "La migliore selezione musicale per mantenere alta l'energia per tutta la notte.",
+    title: "Sound system",
+    desc: "Console di qualità e DJ resident e ospiti per ogni serata in calendario.",
   },
   {
     icon: Crown,
-    title: "Servizio Premium",
-    desc: "Personale professionale dedicato a creare un'esperienza memorabile.",
+    title: "Bottle service",
+    desc: "Tavolo riservato, mixology dedicata e uno staff che conosce i tuoi gusti.",
   },
   {
     icon: CalendarHeart,
-    title: "Eventi Speciali",
-    desc: "Serate a tema uniche e intrattenimento esclusivo.",
+    title: "Eventi su misura",
+    desc: "Compleanni, addii al celibato/nubilato e private party organizzati su richiesta.",
   },
 ];
 
@@ -35,12 +35,13 @@ export function Experience() {
           transition={{ duration: 0.8 }}
           className="text-center mb-20"
         >
-          <p className="text-xs tracking-[0.5em] text-gold uppercase mb-4">La Nostra Esperienza</p>
+          <p className="text-xs tracking-[0.5em] text-gold uppercase mb-4">Esperienze</p>
           <h2 className="font-display text-5xl md:text-6xl font-bold">
-            <span className="text-gold-gradient">L'Esperienza</span> MAXIMUS
+            Cosa trovi al <span className="text-gold-gradient">MAXIMUS</span>
           </h2>
           <div className="divider-gold w-32 mx-auto mt-6" />
         </motion.div>
+
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {items.map((it, i) => (
