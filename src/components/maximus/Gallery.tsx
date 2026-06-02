@@ -118,15 +118,21 @@ export function Gallery() {
       <div className="relative">
         <div
           ref={trackRef}
+          id="gallery-track"
           onPointerDown={onPointerDown}
           onPointerMove={onPointerMove}
           onPointerUp={onPointerUp}
           onPointerCancel={onPointerUp}
           role="region"
           aria-roledescription="carosello"
-          aria-label="Carosello fotografico"
+          aria-label={`Carosello fotografico con ${photos.length} immagini`}
           aria-describedby="carousel-hint"
-          className="flex gap-4 md:gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory px-6 pb-4 cursor-grab active:cursor-grabbing select-none touch-pan-x [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          tabIndex={0}
+          onKeyDown={(e) => {
+            if (e.key === "ArrowRight") { e.preventDefault(); scrollBy(1); }
+            if (e.key === "ArrowLeft") { e.preventDefault(); scrollBy(-1); }
+          }}
+          className="flex gap-4 md:gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory px-6 pb-4 cursor-grab active:cursor-grabbing select-none touch-pan-x [scrollbar-width:none] [&::-webkit-scrollbar]:hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-lg"
         >
           {photos.map((p, i) => (
             <button
