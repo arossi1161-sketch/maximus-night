@@ -1,4 +1,5 @@
 import { motion } from "motion/react";
+import aboutWebp from "@/assets/photos/p7.webp";
 import about from "@/assets/photos/p7.jpg";
 
 export function About() {
