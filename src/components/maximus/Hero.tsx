@@ -74,9 +74,18 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.3, duration: 0.8 }}
-            className="text-base sm:text-lg italic text-muted-foreground max-w-2xl mx-auto mb-10"
+            className="text-base sm:text-lg italic text-muted-foreground max-w-2xl mx-auto mb-4"
           >
             "Dove la musica accende l'Umbria fino all'alba."
+          </motion.p>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.4, duration: 0.8 }}
+            className="text-sm sm:text-base text-gold/90 max-w-2xl mx-auto mb-10"
+          >
+            Champagne, musica, eleganza e la compagnia delle nostre splendide hostess.
           </motion.p>
 
 

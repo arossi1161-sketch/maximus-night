@@ -108,16 +108,18 @@ export function Contact({ showForm = true }: { showForm?: boolean }) {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="rounded-2xl overflow-hidden neon-border-blue min-h-[360px]"
+            className="relative group rounded-2xl overflow-hidden neon-border-blue min-h-[360px] bg-black"
           >
+            <div className="pointer-events-none absolute inset-0 z-10 ring-1 ring-inset ring-gold/20 rounded-2xl" />
+            <div className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-tr from-neon-purple/20 via-transparent to-neon-blue/15 mix-blend-screen transition-opacity duration-500 group-hover:opacity-60" />
+            <div className="pointer-events-none absolute -inset-px z-10 rounded-2xl shadow-[inset_0_0_60px_rgba(0,0,0,0.6)]" />
             <iframe
               title="Mappa MAXIMUS — Stroncone (TR)"
               src={`https://www.google.com/maps?q=${mapsQ}&output=embed`}
-              className="w-full h-full min-h-[360px]"
+              className="relative w-full h-full min-h-[360px] md:min-h-[440px]"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
             />
-
           </motion.div>
         </div>
 
