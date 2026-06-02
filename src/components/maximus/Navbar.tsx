@@ -68,11 +68,11 @@ export function Navbar() {
               </a>
             ))}
             <a
-              href="#prenota"
+              href="#lavora"
               onClick={() => setOpen(false)}
               className="btn-neon-gold px-5 py-3 rounded-md text-xs text-center"
             >
-              Prenota un Tavolo
+              Lavora con Noi
             </a>
           </nav>
         </div>
