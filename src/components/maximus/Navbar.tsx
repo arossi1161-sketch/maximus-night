@@ -40,8 +40,8 @@ export function Navbar() {
               {l.label}
             </a>
           ))}
-          <a href="#prenota" className="btn-neon-gold px-5 py-2 rounded-md text-xs">
-            Prenota
+          <a href="#lavora" className="btn-neon-gold px-5 py-2 rounded-md text-xs">
+            Lavora con Noi
           </a>
         </nav>
 
