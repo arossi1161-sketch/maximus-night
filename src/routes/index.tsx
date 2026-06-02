@@ -3,6 +3,7 @@ import { Hero } from "@/components/maximus/Hero";
 import { About } from "@/components/maximus/About";
 import { Experience } from "@/components/maximus/Experience";
 import { Gallery } from "@/components/maximus/Gallery";
+import { Hostess } from "@/components/maximus/Hostess";
 import { Contact } from "@/components/maximus/Contact";
 import { ReservationForm } from "@/components/maximus/ReservationForm";
 import { SiteLayout } from "@/components/maximus/SiteLayout";
