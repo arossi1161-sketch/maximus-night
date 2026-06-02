@@ -1,6 +1,5 @@
-import { useState } from "react";
 import { motion } from "motion/react";
-import { MapPin, Phone, Clock, Navigation, Mail, Loader2 } from "lucide-react";
+import { MapPin, Phone, Clock, Navigation, Mail } from "lucide-react";
 
 export function Contact() {
   const [mapLoaded, setMapLoaded] = useState(false);
