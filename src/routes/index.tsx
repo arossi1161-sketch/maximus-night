@@ -112,30 +112,32 @@ function HomePage() {
     <SiteLayout>
       <Hero />
       <About />
-      <section id="esperienze">
-        <Experience />
-      </section>
-      <Gallery />
-      <Hostess />
-      <section id="prenota" className="relative py-24 md:py-32 px-6">
-        <div className="max-w-4xl mx-auto text-center mb-12">
-          <p className="text-xs tracking-[0.5em] text-gold uppercase mb-4">Prenota</p>
-          <h2 className="font-display text-4xl md:text-6xl font-bold">
-            Assicurati il tuo <span className="text-gold-gradient">posto</span>
-          </h2>
-          <div className="divider-gold w-32 mx-auto mt-6" />
-          <p className="text-muted-foreground mt-6">
-            Compila il form: confermiamo disponibilità e dettagli direttamente con te.
-          </p>
-        </div>
+      <Suspense fallback={<SectionFallback />}>
+        <section id="esperienze">
+          <Experience />
+        </section>
+        <Gallery />
+        <Hostess />
+        <section id="prenota" className="relative py-24 md:py-32 px-6">
+          <div className="max-w-4xl mx-auto text-center mb-12">
+            <p className="text-xs tracking-[0.5em] text-gold uppercase mb-4">Prenota</p>
+            <h2 className="font-display text-4xl md:text-6xl font-bold">
+              Assicurati il tuo <span className="text-gold-gradient">posto</span>
+            </h2>
+            <div className="divider-gold w-32 mx-auto mt-6" />
+            <p className="text-muted-foreground mt-6">
+              Compila il form: confermiamo disponibilità e dettagli direttamente con te.
+            </p>
+          </div>
 
-        <div className="max-w-3xl mx-auto">
-          <ReservationForm />
-        </div>
-      </section>
-      <section id="contatti">
-        <Contact />
-      </section>
+          <div className="max-w-3xl mx-auto">
+            <ReservationForm />
+          </div>
+        </section>
+        <section id="contatti">
+          <Contact />
+        </section>
+      </Suspense>
     </SiteLayout>
   );
 }
