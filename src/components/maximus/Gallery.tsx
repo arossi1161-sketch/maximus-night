@@ -91,12 +91,23 @@ export function Gallery() {
       <div className="relative">
         <div
           ref={trackRef}
-          className="flex gap-4 md:gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory px-6 pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          onPointerDown={onPointerDown}
+          onPointerMove={onPointerMove}
+          onPointerUp={onPointerUp}
+          onPointerCancel={onPointerUp}
+          className="flex gap-4 md:gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory px-6 pb-4 cursor-grab active:cursor-grabbing select-none touch-pan-x [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         >
           {photos.map((p, i) => (
             <button
               key={i}
-              onClick={() => setActive(i)}
+              onClick={(e) => {
+                if (dragState.current.moved) {
+                  e.preventDefault();
+                  return;
+                }
+                setActive(i);
+              }}
+              draggable={false}
               className="group relative shrink-0 snap-center h-56 sm:h-72 md:h-80 w-72 sm:w-96 md:w-[28rem] overflow-hidden rounded-xl neon-border"
               aria-label={p.alt}
             >
