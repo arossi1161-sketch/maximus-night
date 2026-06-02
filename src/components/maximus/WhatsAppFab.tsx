@@ -14,15 +14,14 @@ export function WhatsAppFab() {
       className="fixed bottom-5 right-5 z-50 inline-flex items-center justify-center
         w-16 h-16
         rounded-full
-        bg-white
-        border-2 border-[#25D366]
-        shadow-[0_4px_20px_rgba(37,211,102,0.45)]
-        hover:shadow-[0_6px_28px_rgba(37,211,102,0.65)]
+        bg-[#25D366]
+        shadow-[0_4px_24px_rgba(18,140,126,0.55)]
+        hover:shadow-[0_6px_32px_rgba(18,140,126,0.75)]
         hover:scale-110
         active:scale-95
         transition-all duration-200
         focus-visible:outline-none
-        focus-visible:ring-[3px] focus-visible:ring-[#25D366] focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+        focus-visible:ring-[3px] focus-visible:ring-white/80 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
     >
       <img
         src={waLogo.url}
