@@ -3,11 +3,10 @@ import { Menu, X } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 
 const links = [
-  { to: "/" as const, label: "Home" },
-  { to: "/locale" as const, label: "Il Locale" },
-  { to: "/esperienze" as const, label: "Esperienze" },
-  { to: "/galleria" as const, label: "Galleria" },
-  { to: "/contatti" as const, label: "Contatti" },
+  { href: "#locale", label: "Il Locale" },
+  { href: "#esperienze", label: "Esperienze" },
+  { href: "#galleria", label: "Galleria" },
+  { href: "#contatti", label: "Contatti" },
 ];
 
 export function Navbar() {
@@ -23,9 +22,7 @@ export function Navbar() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? "bg-background/80 backdrop-blur-md border-b border-border"
-          : "bg-transparent"
+        scrolled ? "bg-background/80 backdrop-blur-md border-b border-border" : "bg-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
@@ -35,18 +32,17 @@ export function Navbar() {
 
         <nav className="hidden md:flex items-center gap-7">
           {links.map((l) => (
-            <Link
-              key={l.to}
-              to={l.to}
+            <a
+              key={l.href}
+              href={l.href}
               className="text-xs tracking-[0.2em] uppercase text-foreground/80 hover:text-gold transition-colors"
-              activeProps={{ className: "text-gold" }}
             >
               {l.label}
-            </Link>
+            </a>
           ))}
-          <Link to="/prenota" className="btn-neon-gold px-5 py-2 rounded-md text-xs">
+          <a href="#prenota" className="btn-neon-gold px-5 py-2 rounded-md text-xs">
             Prenota
-          </Link>
+          </a>
         </nav>
 
         <button
@@ -62,22 +58,22 @@ export function Navbar() {
         <div className="md:hidden bg-background/95 backdrop-blur-xl border-t border-border">
           <nav className="flex flex-col p-6 gap-4">
             {links.map((l) => (
-              <Link
-                key={l.to}
-                to={l.to}
+              <a
+                key={l.href}
+                href={l.href}
                 onClick={() => setOpen(false)}
                 className="text-sm tracking-[0.2em] uppercase text-foreground/80 hover:text-gold"
               >
                 {l.label}
-              </Link>
+              </a>
             ))}
-            <Link
-              to="/prenota"
+            <a
+              href="#prenota"
               onClick={() => setOpen(false)}
               className="btn-neon-gold px-5 py-3 rounded-md text-xs text-center"
             >
               Prenota un Tavolo
-            </Link>
+            </a>
           </nav>
         </div>
       )}
