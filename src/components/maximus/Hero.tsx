@@ -95,8 +95,8 @@ export function Hero() {
             transition={{ delay: 1.5, duration: 0.8 }}
             className="flex flex-col sm:flex-row gap-4 justify-center items-center"
           >
-            <a href="#prenota" className="btn-neon-gold px-8 py-4 rounded-md text-sm">
-              Prenota un Tavolo
+            <a href="#lavora" className="btn-neon-gold px-8 py-4 rounded-md text-sm">
+              Lavora con Noi
             </a>
             <a href="#contatti" className="btn-neon-outline px-8 py-4 rounded-md text-sm">
               Contattaci
