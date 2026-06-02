@@ -3,6 +3,7 @@ import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
 import { CookieConsent } from "./CookieConsent";
 import { LegalModal, PrivacyContent, CookieContent, TermsContent } from "./LegalModal";
+import { WhatsAppFab } from "./WhatsAppFab";
 
 export function SiteLayout({ children }: { children: ReactNode }) {
   const [privacy, setPrivacy] = useState(false);
