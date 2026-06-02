@@ -1,15 +1,29 @@
+import { lazy, Suspense } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { Hero } from "@/components/maximus/Hero";
 import { About } from "@/components/maximus/About";
-import { Experience } from "@/components/maximus/Experience";
-import { Gallery } from "@/components/maximus/Gallery";
-import { Hostess } from "@/components/maximus/Hostess";
-import { Contact } from "@/components/maximus/Contact";
-import { ReservationForm } from "@/components/maximus/ReservationForm";
 import { SiteLayout } from "@/components/maximus/SiteLayout";
 import ogImage from "@/assets/photos/p7.jpg";
 import heroWebp1024 from "@/assets/photos/p7-1024.webp";
 import heroWebp640 from "@/assets/photos/p7-640.webp";
+
+const Experience = lazy(() =>
+  import("@/components/maximus/Experience").then((m) => ({ default: m.Experience })),
+);
+const Gallery = lazy(() =>
+  import("@/components/maximus/Gallery").then((m) => ({ default: m.Gallery })),
+);
+const Hostess = lazy(() =>
+  import("@/components/maximus/Hostess").then((m) => ({ default: m.Hostess })),
+);
+const ReservationForm = lazy(() =>
+  import("@/components/maximus/ReservationForm").then((m) => ({ default: m.ReservationForm })),
+);
+const Contact = lazy(() =>
+  import("@/components/maximus/Contact").then((m) => ({ default: m.Contact })),
+);
+
+const SectionFallback = () => <div className="min-h-[400px]" aria-hidden="true" />;
 
 const SITE = "https://maximus-night.lovable.app";
 const TITLE = "MAXIMUS — Luxury Night Club a Stroncone, Terni";
