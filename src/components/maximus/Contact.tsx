@@ -2,7 +2,6 @@ import { motion } from "motion/react";
 import { MapPin, Phone, Clock, Navigation, Mail } from "lucide-react";
 
 export function Contact() {
-  const [mapLoaded, setMapLoaded] = useState(false);
   const address = "Stroncone, 05039 Terni (TR), Italia";
   const mapsQ = encodeURIComponent(address);
   const mapsLink = "https://maps.app.goo.gl/QvJPiSrK8tYekzjL7";
