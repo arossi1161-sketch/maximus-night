@@ -13,24 +13,27 @@ import g9 from "@/assets/photos/p9.jpg";
 import g10 from "@/assets/photos/p10.jpg";
 
 const photos = [
-  { src: g4, alt: "Sala principale con luci blu" , span: "row-span-2" },
+  { src: g4, alt: "Sala principale con luci blu" },
   { src: g7, alt: "Bar centrale del MAXIMUS" },
   { src: g8, alt: "Salotti in zona lounge" },
-  { src: g1, alt: "Pista da ballo illuminata", span: "row-span-2" },
+  { src: g1, alt: "Pista da ballo illuminata" },
   { src: g5, alt: "Area divani privati" },
   { src: g3, alt: "Sala con scultura" },
   { src: g6, alt: "Corridoio rosso del locale" },
   { src: g2, alt: "Sala secondaria" },
   { src: g9, alt: "Ingresso panoramico" },
   { src: g10, alt: "Cabine private" },
-] as const;
+];
+
+// Duplicate for seamless marquee loop
+const marquee = [...photos, ...photos];
 
 export function Gallery() {
   const [active, setActive] = useState<number | null>(null);
 
   return (
-    <section id="gallery" className="relative py-24 md:py-32 px-6">
-      <div className="max-w-7xl mx-auto">
+    <section id="galleria" className="relative py-24 md:py-32 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -44,17 +47,23 @@ export function Gallery() {
           </h2>
           <div className="divider-gold w-32 mx-auto mt-6" />
         </motion.div>
+      </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 auto-rows-[180px] sm:auto-rows-[220px] md:auto-rows-[260px] gap-3 sm:gap-4">
-          {photos.map((p, i) => (
-            <motion.button
+      <div
+        className="relative w-full overflow-hidden"
+        style={{
+          maskImage:
+            "linear-gradient(to right, transparent, black 8%, black 92%, transparent)",
+          WebkitMaskImage:
+            "linear-gradient(to right, transparent, black 8%, black 92%, transparent)",
+        }}
+      >
+        <div className="flex gap-4 md:gap-6 animate-marquee w-max">
+          {marquee.map((p, i) => (
+            <button
               key={i}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: Math.min(i * 0.05, 0.4) }}
-              onClick={() => setActive(i)}
-              className={`group relative overflow-hidden rounded-xl neon-border ${("span" in p && p.span) || ""}`}
+              onClick={() => setActive(i % photos.length)}
+              className="group relative shrink-0 h-56 sm:h-72 md:h-80 w-72 sm:w-96 md:w-[28rem] overflow-hidden rounded-xl neon-border"
               aria-label={p.alt}
             >
               <img
@@ -62,11 +71,11 @@ export function Gallery() {
                 alt={p.alt}
                 loading="lazy"
                 decoding="async"
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1.2s] group-hover:scale-110"
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-60 group-hover:opacity-30 transition-opacity" />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent opacity-60 group-hover:opacity-30 transition-opacity" />
               <div className="absolute inset-0 ring-1 ring-inset ring-gold/0 group-hover:ring-gold/40 transition-all duration-500" />
-            </motion.button>
+            </button>
           ))}
         </div>
       </div>
