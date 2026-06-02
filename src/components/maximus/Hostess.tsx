@@ -1,10 +1,6 @@
 import { motion } from "motion/react";
-import { Sparkles, Lock, Crown, MessageCircle } from "lucide-react";
+import { Sparkles, Lock, Crown } from "lucide-react";
 import hostessImg from "@/assets/hostess.jpg";
-
-const WA_HREF = `https://wa.me/390744000000?text=${encodeURIComponent(
-  "Ciao MAXIMUS! Vorrei informazioni sulle hostess e prenotare una serata."
-)}`;
 
 const cards = [
   {
@@ -97,24 +93,7 @@ export function Hostess() {
                 >
                   <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-gold/10 flex items-center justify-center">
                     <c.icon className="w-5 h-5 text-gold" />
-            </div>
-
-            <motion.a
-              href={WA_HREF}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Prenota le hostess su WhatsApp"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
-              className="inline-flex items-center justify-center gap-3 w-full sm:w-auto px-7 py-4 rounded-full bg-[#25D366] text-black font-semibold shadow-[0_0_30px_rgba(37,211,102,0.4)] hover:shadow-[0_0_40px_rgba(37,211,102,0.6)] transition-shadow focus:outline-none focus-visible:ring-2 focus-visible:ring-[#25D366] focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-            >
-              <MessageCircle className="w-5 h-5" aria-hidden="true" />
-              <span>Prenota su WhatsApp</span>
-            </motion.a>
+                  </div>
                   <h3 className="font-display text-lg text-gold-gradient mb-2">
                     ✦ {c.title}
                   </h3>
