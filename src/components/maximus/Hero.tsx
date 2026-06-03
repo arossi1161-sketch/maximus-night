@@ -49,7 +49,8 @@ export function Hero() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.4, duration: 1 }}
-            className="font-display neon-logo text-6xl sm:text-8xl md:text-9xl lg:text-[10rem] xl:text-[11rem] font-bold leading-[1.05] py-2 px-4 overflow-visible"
+            className="font-display neon-logo text-5xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[10rem] font-bold leading-[1.1] py-2 px-2 overflow-visible tracking-normal"
+            style={{ letterSpacing: "0.02em" }}
           >
             MAXIMUS
           </motion.h1>
