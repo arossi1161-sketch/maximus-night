@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
-import { Link } from "@tanstack/react-router";
 
 const links = [
   { href: "#locale", label: "Il Locale" },
@@ -26,9 +25,9 @@ export function Navbar() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-        <Link to="/" className="font-display text-2xl neon-logo tracking-widest">
+        <a href="/" className="font-display text-2xl neon-logo tracking-widest">
           MAXIMUS
-        </Link>
+        </a>
 
         <nav className="hidden md:flex items-center gap-7">
           {links.map((l) => (
