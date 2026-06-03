@@ -20,6 +20,9 @@ const JobApplicationForm = lazy(() =>
 const Contact = lazy(() =>
   import("@/components/maximus/Contact").then((m) => ({ default: m.Contact })),
 );
+const FAQ = lazy(() =>
+  import("@/components/maximus/FAQ").then((m) => ({ default: m.FAQ })),
+);
 
 const SectionFallback = () => <div className="min-h-[400px]" aria-hidden="true" />;
 
@@ -47,6 +50,7 @@ export default function App() {
           </div>
           <JobApplicationForm />
         </section>
+        <FAQ />
         <section id="contatti">
           <Contact />
         </section>

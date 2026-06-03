@@ -5,32 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#050505" />
     <meta name="format-detection" content="telephone=no" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="MAXIMUS Luxury Night Club" />
+    <meta name="geo.region" content="IT-TR" />
+    <meta name="geo.placename" content="Stroncone, Terni" />
 
-    <title>MAXIMUS — Luxury Night Club a Stroncone, Terni</title>
+    <title>MAXIMUS Night Club Terni — Discoteca & Locale Notturno in Umbria</title>
     <meta
       name="description"
-      content="MAXIMUS Luxury Night Club a Stroncone (Terni). Musica, atmosfera ed esperienze esclusive nel cuore dell'Umbria."
+      content="MAXIMUS Night Club a Terni: la discoteca più esclusiva dell'Umbria. Musica, champagne, hostess e atmosfera premium. Locale notturno a Stroncone, Terni."
     />
     <meta
       name="keywords"
-      content="discoteca Terni, night club Stroncone, locale notturno Umbria, MAXIMUS, eventi Terni"
+      content="Night Club Terni, Locale notturno Terni, Discoteca Terni, Night Club Umbria, MAXIMUS Terni, discoteca Stroncone, locale esclusivo Umbria"
     />
-    <link rel="canonical" href="https://maximus-night.lovable.app/" />
+    <link rel="canonical" href="https://maximusterni.com/" />
 
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="MAXIMUS Club" />
+    <meta property="og:site_name" content="MAXIMUS Night Club Terni" />
     <meta property="og:locale" content="it_IT" />
-    <meta property="og:title" content="MAXIMUS — Luxury Night Club a Stroncone, Terni" />
+    <meta property="og:title" content="MAXIMUS Night Club Terni — Discoteca & Locale Notturno in Umbria" />
     <meta
       property="og:description"
-      content="MAXIMUS Luxury Night Club a Stroncone (Terni). Musica, atmosfera ed esperienze esclusive nel cuore dell'Umbria."
+      content="MAXIMUS Night Club a Terni: la discoteca più esclusiva dell'Umbria. Musica, champagne, hostess e atmosfera premium."
     />
-    <meta property="og:url" content="https://maximus-night.lovable.app/" />
+    <meta property="og:url" content="https://maximusterni.com/" />
+
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="MAXIMUS — Luxury Night Club a Stroncone, Terni" />
+    <meta name="twitter:title" content="MAXIMUS Night Club Terni — Discoteca & Locale Notturno in Umbria" />
     <meta
       name="twitter:description"
-      content="MAXIMUS Luxury Night Club a Stroncone (Terni). Musica, atmosfera ed esperienze esclusive nel cuore dell'Umbria."
+      content="MAXIMUS Night Club a Terni: la discoteca più esclusiva dell'Umbria. Musica, champagne, hostess e atmosfera premium."
     />
 
     <link rel="icon" href="/favicon.ico" sizes="any" />
@@ -49,27 +54,85 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "NightClub",
-        "name": "MAXIMUS Luxury Night Club",
-        "url": "https://maximus-night.lovable.app/",
-        "description": "MAXIMUS Luxury Night Club a Stroncone (Terni). Musica, atmosfera ed esperienze esclusive nel cuore dell'Umbria.",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Stroncone",
-          "addressRegion": "TR",
-          "addressCountry": "IT",
-          "postalCode": "05039"
-        },
-        "openingHoursSpecification": [
+        "@graph": [
           {
-            "@type": "OpeningHoursSpecification",
-            "dayOfWeek": ["Friday", "Saturday", "Sunday"],
-            "opens": "22:00",
-            "closes": "04:00"
+            "@type": ["NightClub", "LocalBusiness"],
+            "@id": "https://maximusterni.com/#business",
+            "name": "MAXIMUS Luxury Night Club",
+            "alternateName": "MAXIMUS Terni",
+            "url": "https://maximusterni.com/",
+            "description": "Night Club e discoteca esclusiva a Stroncone (Terni), Umbria. Musica, champagne, hostess e atmosfera premium.",
+            "image": "https://maximusterni.com/apple-touch-icon.png",
+            "telephone": "+39 388 371 6721",
+            "priceRange": "€€€",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Stroncone",
+              "addressRegion": "TR",
+              "postalCode": "05039",
+              "addressCountry": "IT"
+            },
+            "areaServed": [
+              { "@type": "City", "name": "Terni" },
+              { "@type": "AdministrativeArea", "name": "Umbria" }
+            ],
+            "openingHoursSpecification": [
+              {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Friday", "Saturday", "Sunday"],
+                "opens": "22:00",
+                "closes": "04:00"
+              }
+            ],
+            "sameAs": []
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://maximusterni.com/#website",
+            "url": "https://maximusterni.com/",
+            "name": "MAXIMUS Night Club Terni",
+            "inLanguage": "it-IT",
+            "publisher": { "@id": "https://maximusterni.com/#business" }
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://maximusterni.com/#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Dove si trova il MAXIMUS Night Club?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Il MAXIMUS Night Club si trova a Stroncone, a pochi minuti da Terni, in Umbria."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Quali sono gli orari di apertura del locale notturno?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Il MAXIMUS è aperto venerdì, sabato e domenica dalle 22:00 alle 04:00."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Come posso prenotare un tavolo alla discoteca MAXIMUS di Terni?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Puoi prenotare un tavolo contattandoci via WhatsApp al +39 388 371 6721 o tramite il modulo contatti del sito."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "MAXIMUS è il miglior night club in Umbria?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "MAXIMUS è uno dei locali notturni più esclusivi dell'Umbria, con musica, champagne, hostess e un'atmosfera premium."
+                }
+              }
+            ]
           }
-        ],
-        "priceRange": "€€€",
-        "telephone": "+39 0744 000 000"
+        ]
       }
     </script>
   </head>
