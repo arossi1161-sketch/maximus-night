@@ -136,7 +136,7 @@ export function ContactForm() {
       </div>
 
       <a
-        href={`https://wa.me/390744000000?text=${encodeURIComponent(
+        href={`https://wa.me/393883716721?text=${encodeURIComponent(
           "Ciao MAXIMUS! Vorrei avere informazioni sul locale e sulle prossime serate.",
         )}`}
         target="_blank"

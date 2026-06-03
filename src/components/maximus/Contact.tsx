@@ -57,8 +57,8 @@ export function Contact() {
                   <p className="text-xs uppercase tracking-widest text-muted-foreground mb-1">
                     Telefono
                   </p>
-                  <a href="tel:+390744000000" className="text-foreground hover:text-gold">
-                    +39 0744 000 000
+                  <a href="tel:+393883716721" className="text-foreground hover:text-gold">
+                    +39 388 371 6721
                   </a>
                 </div>
               </div>
@@ -124,7 +124,7 @@ export function Contact() {
             Per informazioni e prenotazioni veloci, scrivici direttamente su WhatsApp.
           </p>
           <a
-            href={`https://wa.me/390744000000?text=${encodeURIComponent(
+            href={`https://wa.me/393883716721?text=${encodeURIComponent(
               "Ciao MAXIMUS! Vorrei avere informazioni sul locale e sulle prossime serate.",
             )}`}
             target="_blank"

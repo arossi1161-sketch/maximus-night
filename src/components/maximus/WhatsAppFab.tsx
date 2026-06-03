@@ -1,4 +1,4 @@
-const WA_HREF = `https://wa.me/390744000000?text=${encodeURIComponent(
+const WA_HREF = `https://wa.me/393883716721?text=${encodeURIComponent(
   "Ciao MAXIMUS! Vorrei informazioni e prenotare.",
 )}`;
 
