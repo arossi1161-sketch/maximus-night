@@ -82,6 +82,12 @@ export function JobApplicationForm() {
           Offriamo un ambiente di lavoro stimolante, orari flessibili e ottime opportunità di
           crescita. Unisciti a noi e fai parte delle notti più esclusive dell'Umbria.
         </p>
+        <p className="text-muted-foreground text-base md:text-lg leading-relaxed">
+          Per candidature o informazioni scrivi a{" "}
+          <a href="mailto:info@maximusterni.com" className="text-gold hover:underline">
+            info@maximusterni.com
+          </a>.
+        </p>
 
         <div className="grid sm:grid-cols-2 gap-4 pt-2">
           {BENEFITS.map(({ icon: Icon, label }) => (

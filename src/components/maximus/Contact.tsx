@@ -71,8 +71,8 @@ export function Contact() {
                   <p className="text-xs uppercase tracking-widest text-muted-foreground mb-1">
                     Email
                   </p>
-                  <a href="mailto:info@maximusclub.it" className="text-foreground hover:text-gold">
-                    info@maximusclub.it
+                  <a href="mailto:info@maximusterni.com" className="text-foreground hover:text-gold">
+                    info@maximusterni.com
                   </a>
                 </div>
               </div>

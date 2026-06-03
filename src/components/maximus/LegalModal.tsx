@@ -58,7 +58,7 @@ export function PrivacyContent() {
         Ultimo aggiornamento: {new Date().toLocaleDateString("it-IT")}
       </p>
       <h3 className="font-display text-xl text-gold mt-4">1. Titolare del trattamento</h3>
-      <p>MAXIMUS Luxury Night Club — Via della Notte 1, 00100 Roma — info@maximusclub.it</p>
+      <p>MAXIMUS Luxury Night Club — Stroncone, 05039 Terni (TR) — info@maximusterni.com</p>
 
       <h3 className="font-display text-xl text-gold mt-4">2. Dati raccolti</h3>
       <p>
@@ -90,7 +90,7 @@ export function PrivacyContent() {
       <p>
         Hai diritto di accesso, rettifica, cancellazione, limitazione, portabilità, opposizione e di
         proporre reclamo al Garante Privacy (www.garanteprivacy.it). Per esercitare i tuoi diritti
-        scrivi a privacy@maximusclub.it.
+        scrivi a privacy@maximusterni.com.
       </p>
 
       <h3 className="font-display text-xl text-gold mt-4">7. Trasferimenti</h3>

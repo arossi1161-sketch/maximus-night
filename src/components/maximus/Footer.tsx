@@ -24,7 +24,7 @@ export function Footer({
             <p className="text-xs uppercase tracking-[0.3em] text-gold mb-4">Contatti</p>
             <p className="text-sm text-muted-foreground">Stroncone, 05039 Terni (TR)</p>
             <p className="text-sm text-muted-foreground">Umbria, Italia</p>
-            <p className="text-sm text-muted-foreground mt-2">info@maximusclub.it</p>
+            <p className="text-sm text-muted-foreground mt-2">info@maximusterni.com</p>
           </div>
         </div>
 
