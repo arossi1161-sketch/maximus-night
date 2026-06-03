@@ -192,6 +192,37 @@
     border: 1px solid rgba(255,255,255,0.06);
   }
 
+  .input-luxe {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    border-radius: 0.5rem;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(245, 208, 111, 0.28);
+    color: var(--color-foreground);
+    font-size: 0.95rem;
+    transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
+    outline: none;
+  }
+  .input-luxe::placeholder { color: rgba(255,255,255,0.45); }
+  .input-luxe:hover { border-color: rgba(245, 208, 111, 0.5); }
+  .input-luxe:focus,
+  .input-luxe:focus-visible {
+    border-color: rgba(245, 208, 111, 0.9);
+    background: rgba(255, 255, 255, 0.06);
+    box-shadow: 0 0 0 3px rgba(245, 208, 111, 0.18);
+  }
+  select.input-luxe {
+    appearance: none;
+    background-image:
+      linear-gradient(45deg, transparent 50%, rgba(245,208,111,0.7) 50%),
+      linear-gradient(135deg, rgba(245,208,111,0.7) 50%, transparent 50%);
+    background-position: calc(100% - 18px) 50%, calc(100% - 12px) 50%;
+    background-size: 6px 6px, 6px 6px;
+    background-repeat: no-repeat;
+    padding-right: 2.25rem;
+  }
+  select.input-luxe option { background: #0c0c12; color: #fff; }
+
   .bg-hero-ambient { background: var(--gradient-hero); }
 
   .divider-gold {
