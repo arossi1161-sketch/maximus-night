@@ -35,7 +35,7 @@ export function Hero() {
       <div className="absolute -bottom-1/3 right-0 h-[400px] w-[400px] rounded-full bg-neon-purple/15 blur-3xl pointer-events-none" />
 
       <div className="relative z-10 flex h-full items-center justify-center px-6">
-        <div className="text-center max-w-4xl">
+        <div className="text-center max-w-6xl w-full px-2">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -49,7 +49,7 @@ export function Hero() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.4, duration: 1 }}
-            className="font-display neon-logo text-6xl sm:text-8xl md:text-9xl lg:text-[11rem] font-bold leading-none"
+            className="font-display neon-logo text-6xl sm:text-8xl md:text-9xl lg:text-[10rem] xl:text-[11rem] font-bold leading-[1.05] py-2 px-4 overflow-visible"
           >
             MAXIMUS
           </motion.h1>
