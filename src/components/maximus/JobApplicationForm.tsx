@@ -3,6 +3,7 @@ import { motion } from "motion/react";
 import { z } from "zod";
 import { Briefcase, Loader2, CheckCircle2, Sparkles, Clock, Wallet, Users } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
+import { logFormSubmission } from "@/lib/form-log";
 
 const ROLES = [
   "Ragazza Immagine",
