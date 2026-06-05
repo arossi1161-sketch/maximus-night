@@ -2,6 +2,7 @@ import { lazy, Suspense } from "react";
 import { Hero } from "@/components/maximus/Hero";
 import { About } from "@/components/maximus/About";
 import { SiteLayout } from "@/components/maximus/SiteLayout";
+import { Unsubscribe } from "@/components/maximus/Unsubscribe";
 
 const Experience = lazy(() =>
   import("@/components/maximus/Experience").then((m) => ({ default: m.Experience })),
@@ -27,6 +28,9 @@ const FAQ = lazy(() =>
 const SectionFallback = () => <div className="min-h-[400px]" aria-hidden="true" />;
 
 export default function App() {
+  if (typeof window !== "undefined" && window.location.pathname.startsWith("/unsubscribe")) {
+    return <Unsubscribe />;
+  }
   return (
     <SiteLayout>
       <Hero />
