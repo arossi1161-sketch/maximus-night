@@ -3,6 +3,8 @@ import { motion } from "motion/react";
 import { z } from "zod";
 import { CalendarDays, Loader2, CheckCircle2 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
+import { logFormSubmission } from "@/lib/form-log";
+
 
 const today = new Date().toISOString().slice(0, 10);
 
