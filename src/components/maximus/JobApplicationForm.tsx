@@ -47,11 +47,18 @@ export function JobApplicationForm() {
       const errs: Record<string, string> = {};
       parsed.error.issues.forEach((i) => (errs[i.path[0] as string] = i.message));
       setErrors(errs);
+      void logFormSubmission({
+        formType: "job_application",
+        status: "validation_error",
+        errorStage: "zod",
+        errorMessage: parsed.error.issues.map((i) => `${i.path.join(".")}: ${i.message}`).join("; "),
+      });
       return;
     }
     setErrors({});
     setStatus("loading");
     const applicationId = crypto.randomUUID();
+    const summary = { email: parsed.data.email, role: parsed.data.role };
     const { error } = await supabase.from("job_applications").insert({
       name: parsed.data.name,
       email: parsed.data.email,
@@ -61,10 +68,17 @@ export function JobApplicationForm() {
     });
     if (error) {
       console.error(error);
+      void logFormSubmission({
+        formType: "job_application",
+        status: "db_error",
+        errorStage: "insert",
+        errorMessage: error.message,
+        payloadSummary: summary,
+      });
       setStatus("error");
       return;
     }
-    await supabase.functions.invoke("send-transactional-email", {
+    const { error: emailError } = await supabase.functions.invoke("send-transactional-email", {
       body: {
         templateName: "job-application-notification",
         recipientEmail: "info@maximusterni.com",
@@ -78,6 +92,23 @@ export function JobApplicationForm() {
         },
       },
     });
+    if (emailError) {
+      void logFormSubmission({
+        formType: "job_application",
+        status: "email_error",
+        errorStage: "send-transactional-email",
+        errorMessage: emailError.message,
+        recipientEmail: "info@maximusterni.com",
+        payloadSummary: summary,
+      });
+    } else {
+      void logFormSubmission({
+        formType: "job_application",
+        status: "success",
+        recipientEmail: "info@maximusterni.com",
+        payloadSummary: summary,
+      });
+    }
     setStatus("ok");
   };
 
