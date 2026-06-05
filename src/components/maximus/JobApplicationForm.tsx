@@ -50,17 +50,14 @@ export function JobApplicationForm() {
     }
     setErrors({});
     setStatus("loading");
-    const { data: inserted, error } = await supabase
-      .from("job_applications")
-      .insert({
-        name: parsed.data.name,
-        email: parsed.data.email,
-        phone: parsed.data.phone,
-        role: parsed.data.role,
-        message: parsed.data.message || null,
-      })
-      .select("id")
-      .single();
+    const applicationId = crypto.randomUUID();
+    const { error } = await supabase.from("job_applications").insert({
+      name: parsed.data.name,
+      email: parsed.data.email,
+      phone: parsed.data.phone,
+      role: parsed.data.role,
+      message: parsed.data.message || null,
+    });
     if (error) {
       console.error(error);
       setStatus("error");
@@ -70,7 +67,7 @@ export function JobApplicationForm() {
       body: {
         templateName: "job-application-notification",
         recipientEmail: "info@maximusterni.com",
-        idempotencyKey: `job-${inserted.id}`,
+        idempotencyKey: `job-${applicationId}`,
         templateData: {
           name: parsed.data.name,
           email: parsed.data.email,
