@@ -128,6 +128,42 @@ export type Database = {
         }
         Relationships: []
       }
+      form_submission_log: {
+        Row: {
+          created_at: string
+          error_message: string | null
+          error_stage: string | null
+          form_type: string
+          id: string
+          payload_summary: Json | null
+          recipient_email: string | null
+          status: string
+          user_agent: string | null
+        }
+        Insert: {
+          created_at?: string
+          error_message?: string | null
+          error_stage?: string | null
+          form_type: string
+          id?: string
+          payload_summary?: Json | null
+          recipient_email?: string | null
+          status: string
+          user_agent?: string | null
+        }
+        Update: {
+          created_at?: string
+          error_message?: string | null
+          error_stage?: string | null
+          form_type?: string
+          id?: string
+          payload_summary?: Json | null
+          recipient_email?: string | null
+          status?: string
+          user_agent?: string | null
+        }
+        Relationships: []
+      }
       job_applications: {
         Row: {
           created_at: string
