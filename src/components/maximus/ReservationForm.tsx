@@ -3,6 +3,8 @@ import { motion } from "motion/react";
 import { z } from "zod";
 import { CalendarDays, Loader2, CheckCircle2 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
+import { logFormSubmission } from "@/lib/form-log";
+
 
 const today = new Date().toISOString().slice(0, 10);
 
@@ -36,10 +38,22 @@ export function ReservationForm() {
       const errs: Record<string, string> = {};
       parsed.error.issues.forEach((i) => (errs[i.path[0] as string] = i.message));
       setErrors(errs);
+      void logFormSubmission({
+        formType: "reservation",
+        status: "validation_error",
+        errorStage: "zod",
+        errorMessage: parsed.error.issues.map((i) => `${i.path.join(".")}: ${i.message}`).join("; "),
+      });
       return;
     }
     setErrors({});
     setStatus("loading");
+    const summary = {
+      email: parsed.data.email,
+      date: parsed.data.reservation_date,
+      time: parsed.data.reservation_time,
+      party: parsed.data.party_size,
+    };
     const { error } = await supabase.from("reservations").insert({
       name: parsed.data.name,
       email: parsed.data.email,
@@ -51,9 +65,21 @@ export function ReservationForm() {
     });
     if (error) {
       console.error(error);
+      void logFormSubmission({
+        formType: "reservation",
+        status: "db_error",
+        errorStage: "insert",
+        errorMessage: error.message,
+        payloadSummary: summary,
+      });
       setStatus("error");
       return;
     }
+    void logFormSubmission({
+      formType: "reservation",
+      status: "success",
+      payloadSummary: summary,
+    });
     setStatus("ok");
   };
 

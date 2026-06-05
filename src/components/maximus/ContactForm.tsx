@@ -3,6 +3,7 @@ import { motion } from "motion/react";
 import { z } from "zod";
 import { Send, Loader2, CheckCircle2 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
+import { logFormSubmission } from "@/lib/form-log";
 
 const schema = z.object({
   name: z.string().trim().min(2, "Nome troppo corto").max(100),
@@ -23,11 +24,18 @@ export function ContactForm() {
       const errs: Record<string, string> = {};
       parsed.error.issues.forEach((i) => (errs[i.path[0] as string] = i.message));
       setErrors(errs);
+      void logFormSubmission({
+        formType: "contact",
+        status: "validation_error",
+        errorStage: "zod",
+        errorMessage: parsed.error.issues.map((i) => `${i.path.join(".")}: ${i.message}`).join("; "),
+      });
       return;
     }
     setErrors({});
     setStatus("loading");
     const submissionId = crypto.randomUUID();
+    const summary = { email: parsed.data.email, hasPhone: !!parsed.data.phone, msgLen: parsed.data.message.length };
     const { error } = await supabase.from("contact_submissions").insert({
       name: parsed.data.name,
       email: parsed.data.email,
@@ -36,10 +44,17 @@ export function ContactForm() {
     });
     if (error) {
       console.error(error);
+      void logFormSubmission({
+        formType: "contact",
+        status: "db_error",
+        errorStage: "insert",
+        errorMessage: error.message,
+        payloadSummary: summary,
+      });
       setStatus("error");
       return;
     }
-    await supabase.functions.invoke("send-transactional-email", {
+    const { error: emailError } = await supabase.functions.invoke("send-transactional-email", {
       body: {
         templateName: "contact-notification",
         recipientEmail: "info@maximusterni.com",
@@ -52,9 +67,27 @@ export function ContactForm() {
         },
       },
     });
+    if (emailError) {
+      void logFormSubmission({
+        formType: "contact",
+        status: "email_error",
+        errorStage: "send-transactional-email",
+        errorMessage: emailError.message,
+        recipientEmail: "info@maximusterni.com",
+        payloadSummary: summary,
+      });
+    } else {
+      void logFormSubmission({
+        formType: "contact",
+        status: "success",
+        recipientEmail: "info@maximusterni.com",
+        payloadSummary: summary,
+      });
+    }
     setStatus("ok");
     setForm({ name: "", email: "", phone: "", message: "" });
   };
+
 
   if (status === "ok") {
     return (
