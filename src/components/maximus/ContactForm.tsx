@@ -27,16 +27,33 @@ export function ContactForm() {
     }
     setErrors({});
     setStatus("loading");
-    const { error } = await supabase.from("contact_submissions").insert({
-      name: parsed.data.name,
-      email: parsed.data.email,
-      phone: parsed.data.phone || null,
-      message: parsed.data.message,
-    });
+    const { data: inserted, error } = await supabase
+      .from("contact_submissions")
+      .insert({
+        name: parsed.data.name,
+        email: parsed.data.email,
+        phone: parsed.data.phone || null,
+        message: parsed.data.message,
+      })
+      .select("id")
+      .single();
     if (error) {
       setStatus("error");
       return;
     }
+    await supabase.functions.invoke("send-transactional-email", {
+      body: {
+        templateName: "contact-notification",
+        recipientEmail: "info@maximusterni.com",
+        idempotencyKey: `contact-${inserted.id}`,
+        templateData: {
+          name: parsed.data.name,
+          email: parsed.data.email,
+          phone: parsed.data.phone || "",
+          message: parsed.data.message,
+        },
+      },
+    });
     setStatus("ok");
     setForm({ name: "", email: "", phone: "", message: "" });
   };
