@@ -50,18 +50,36 @@ export function JobApplicationForm() {
     }
     setErrors({});
     setStatus("loading");
-    const { error } = await supabase.from("job_applications").insert({
-      name: parsed.data.name,
-      email: parsed.data.email,
-      phone: parsed.data.phone,
-      role: parsed.data.role,
-      message: parsed.data.message || null,
-    });
+    const { data: inserted, error } = await supabase
+      .from("job_applications")
+      .insert({
+        name: parsed.data.name,
+        email: parsed.data.email,
+        phone: parsed.data.phone,
+        role: parsed.data.role,
+        message: parsed.data.message || null,
+      })
+      .select("id")
+      .single();
     if (error) {
       console.error(error);
       setStatus("error");
       return;
     }
+    await supabase.functions.invoke("send-transactional-email", {
+      body: {
+        templateName: "job-application-notification",
+        recipientEmail: "info@maximusterni.com",
+        idempotencyKey: `job-${inserted.id}`,
+        templateData: {
+          name: parsed.data.name,
+          email: parsed.data.email,
+          phone: parsed.data.phone,
+          role: parsed.data.role,
+          message: parsed.data.message || "",
+        },
+      },
+    });
     setStatus("ok");
   };
 
