@@ -25,7 +25,7 @@ export async function logFormSubmission(input: FormLogInput): Promise<void> {
       error_stage: input.errorStage ?? null,
       error_message: input.errorMessage?.slice(0, 1000) ?? null,
       recipient_email: input.recipientEmail ?? null,
-      payload_summary: input.payloadSummary ?? null,
+      payload_summary: (input.payloadSummary ?? null) as never,
       user_agent: ua,
     });
     if (error) console.warn("[form-log] insert failed", error.message);
