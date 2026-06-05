@@ -8,6 +8,7 @@ import {
   Container,
   Head,
   Heading,
+  Hr,
   Html,
   Preview,
   Text,
@@ -18,26 +19,23 @@ interface RecoveryEmailProps {
   confirmationUrl: string
 }
 
-export const RecoveryEmail = ({
-  siteName,
-  confirmationUrl,
-}: RecoveryEmailProps) => (
-  <Html lang="en" dir="ltr">
+export const RecoveryEmail = ({ siteName, confirmationUrl }: RecoveryEmailProps) => (
+  <Html lang="it" dir="ltr">
     <Head />
-    <Preview>Reset your password for {siteName}</Preview>
+    <Preview>Reimposta la tua password per {siteName}</Preview>
     <Body style={main}>
       <Container style={container}>
-        <Heading style={h1}>Reset your password</Heading>
+        <Text style={brand}>MAXIMUS · TERNI</Text>
+        <Heading style={h1}>Reimposta la password</Heading>
         <Text style={text}>
-          We received a request to reset your password for {siteName}. Click
-          the button below to choose a new password.
+          Abbiamo ricevuto una richiesta di reset password per {siteName}. Clicca sul pulsante qui sotto per scegliere una nuova password.
         </Text>
         <Button style={button} href={confirmationUrl}>
-          Reset Password
+          Reimposta password
         </Button>
+        <Hr style={hr} />
         <Text style={footer}>
-          If you didn't request a password reset, you can safely ignore this
-          email. Your password will not be changed.
+          Se non hai richiesto il reset, puoi ignorare questa email. La tua password non verrà modificata.
         </Text>
       </Container>
     </Body>
@@ -46,26 +44,21 @@ export const RecoveryEmail = ({
 
 export default RecoveryEmail
 
-const main = { backgroundColor: '#ffffff', fontFamily: 'Arial, sans-serif' }
-const container = { padding: '20px 25px' }
-const h1 = {
-  fontSize: '22px',
-  fontWeight: 'bold' as const,
-  color: '#000000',
-  margin: '0 0 20px',
-}
-const text = {
-  fontSize: '14px',
-  color: '#55575d',
-  lineHeight: '1.5',
-  margin: '0 0 25px',
-}
+const main = { backgroundColor: '#ffffff', fontFamily: 'Helvetica, Arial, sans-serif' }
+const container = { padding: '32px 28px', maxWidth: '560px' }
+const brand = { color: '#b8945a', fontSize: '11px', letterSpacing: '3px', fontWeight: 'bold' as const, margin: '0 0 24px' }
+const h1 = { fontSize: '24px', fontWeight: 'bold' as const, color: '#0a0a0a', margin: '0 0 20px' }
+const text = { fontSize: '15px', color: '#3d3d3d', lineHeight: '1.6', margin: '0 0 20px' }
 const button = {
-  backgroundColor: '#000000',
+  backgroundColor: '#0a0a0a',
   color: '#ffffff',
   fontSize: '14px',
-  borderRadius: '8px',
-  padding: '12px 20px',
+  fontWeight: 'bold' as const,
+  letterSpacing: '1px',
+  borderRadius: '4px',
+  padding: '14px 28px',
   textDecoration: 'none',
+  textTransform: 'uppercase' as const,
 }
-const footer = { fontSize: '12px', color: '#999999', margin: '30px 0 0' }
+const hr = { borderColor: '#e8e4dd', margin: '32px 0 20px' }
+const footer = { fontSize: '12px', color: '#888888', margin: '0' }
