@@ -27,17 +27,15 @@ export function ContactForm() {
     }
     setErrors({});
     setStatus("loading");
-    const { data: inserted, error } = await supabase
-      .from("contact_submissions")
-      .insert({
-        name: parsed.data.name,
-        email: parsed.data.email,
-        phone: parsed.data.phone || null,
-        message: parsed.data.message,
-      })
-      .select("id")
-      .single();
+    const submissionId = crypto.randomUUID();
+    const { error } = await supabase.from("contact_submissions").insert({
+      name: parsed.data.name,
+      email: parsed.data.email,
+      phone: parsed.data.phone || null,
+      message: parsed.data.message,
+    });
     if (error) {
+      console.error(error);
       setStatus("error");
       return;
     }
@@ -45,7 +43,7 @@ export function ContactForm() {
       body: {
         templateName: "contact-notification",
         recipientEmail: "info@maximusterni.com",
-        idempotencyKey: `contact-${inserted.id}`,
+        idempotencyKey: `contact-${submissionId}`,
         templateData: {
           name: parsed.data.name,
           email: parsed.data.email,
