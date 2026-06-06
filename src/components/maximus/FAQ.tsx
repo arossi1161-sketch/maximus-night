@@ -5,7 +5,7 @@ const faqs = [
   },
   {
     q: "Quali sono gli orari di apertura del locale notturno?",
-    a: "Il MAXIMUS è aperto venerdì, sabato e domenica dalle 22:00 alle 04:00.",
+    a: "Il MAXIMUS è aperto tutti i giorni dalle 10:00 alle 04:00. Il venerdì e il sabato fino alle 05:00.",
   },
   {
     q: "Come posso prenotare un tavolo alla discoteca MAXIMUS di Terni?",
