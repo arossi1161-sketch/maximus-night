@@ -85,8 +85,8 @@ export function Contact() {
                   <p className="text-xs uppercase tracking-widest text-muted-foreground mb-1">
                     Orari
                   </p>
-                  <p className="text-foreground">Venerdì – Domenica</p>
-                  <p className="text-muted-foreground text-sm">22:00 – 04:00</p>
+                  <p className="text-foreground">Tutti i giorni: 10:00 – 04:00</p>
+                  <p className="text-muted-foreground text-sm">Venerdì e Sabato: 10:00 – 05:00</p>
                 </div>
               </div>
             </div>
