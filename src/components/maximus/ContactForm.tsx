@@ -59,6 +59,7 @@ export function ContactForm() {
         templateName: "contact-notification",
         recipientEmail: "info@maximusterni.com",
         idempotencyKey: `contact-${submissionId}`,
+        replyTo: parsed.data.email,
         templateData: {
           name: parsed.data.name,
           email: parsed.data.email,

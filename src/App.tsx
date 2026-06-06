@@ -24,12 +24,33 @@ const Contact = lazy(() =>
 const FAQ = lazy(() =>
   import("@/components/maximus/FAQ").then((m) => ({ default: m.FAQ })),
 );
+const AdminLogin = lazy(() =>
+  import("@/components/maximus/AdminLogin").then((m) => ({ default: m.AdminLogin })),
+);
+const AdminLogs = lazy(() =>
+  import("@/components/maximus/AdminLogs").then((m) => ({ default: m.AdminLogs })),
+);
 
 const SectionFallback = () => <div className="min-h-[400px]" aria-hidden="true" />;
 
 export default function App() {
-  if (typeof window !== "undefined" && window.location.pathname.startsWith("/unsubscribe")) {
-    return <Unsubscribe />;
+  if (typeof window !== "undefined") {
+    const path = window.location.pathname;
+    if (path.startsWith("/unsubscribe")) return <Unsubscribe />;
+    if (path.startsWith("/admin/login")) {
+      return (
+        <Suspense fallback={<SectionFallback />}>
+          <AdminLogin />
+        </Suspense>
+      );
+    }
+    if (path.startsWith("/admin")) {
+      return (
+        <Suspense fallback={<SectionFallback />}>
+          <AdminLogs />
+        </Suspense>
+      );
+    }
   }
   return (
     <SiteLayout>

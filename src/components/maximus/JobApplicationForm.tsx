@@ -83,6 +83,7 @@ export function JobApplicationForm() {
         templateName: "job-application-notification",
         recipientEmail: "info@maximusterni.com",
         idempotencyKey: `job-${applicationId}`,
+        replyTo: parsed.data.email,
         templateData: {
           name: parsed.data.name,
           email: parsed.data.email,
