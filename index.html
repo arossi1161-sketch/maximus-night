@@ -63,6 +63,7 @@
             "url": "https://maximusterni.com/",
             "description": "Night Club e discoteca esclusiva a Stroncone (Terni), Umbria. Musica, champagne, hostess e atmosfera premium.",
             "image": "https://maximusterni.com/apple-touch-icon.png",
+            "logo": "https://maximusterni.com/icon-512.png",
             "telephone": "+39 388 371 6721",
             "priceRange": "€€€",
             "address": {
@@ -79,12 +80,28 @@
             "openingHoursSpecification": [
               {
                 "@type": "OpeningHoursSpecification",
-                "dayOfWeek": ["Friday", "Saturday", "Sunday"],
-                "opens": "22:00",
+                "dayOfWeek": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"],
+                "opens": "10:00",
                 "closes": "04:00"
+              },
+              {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Friday", "Saturday"],
+                "opens": "10:00",
+                "closes": "05:00"
               }
             ],
             "sameAs": []
+          },
+          {
+            "@type": "Organization",
+            "@id": "https://maximusterni.com/#organization",
+            "name": "MAXIMUS Luxury Night Club",
+            "url": "https://maximusterni.com/",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://maximusterni.com/icon-512.png"
+            }
           },
           {
             "@type": "WebSite",
@@ -111,7 +128,7 @@
                 "name": "Quali sono gli orari di apertura del locale notturno?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "Il MAXIMUS è aperto venerdì, sabato e domenica dalle 22:00 alle 04:00."
+                  "text": "Il MAXIMUS è aperto tutti i giorni dalle 10:00 alle 04:00; il venerdì e il sabato fino alle 05:00."
                 }
               },
               {
