@@ -51,6 +51,38 @@ export function Footer({
             </button>
           </div>
         </div>
+
+        <div className="mt-10 flex justify-center">
+          <a
+            href="https://omnirasoft.it/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-5 py-2.5 hover:bg-white/10 transition"
+            aria-label="Powered by OmniraSoft - Visita il sito"
+          >
+            <span className="text-xs text-muted-foreground group-hover:text-white transition">Powered by</span>
+            <svg
+              viewBox="0 0 96 20"
+              className="h-5 w-auto text-white opacity-90 group-hover:opacity-100 transition"
+              aria-hidden="true"
+              role="img"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <text
+                x="0"
+                y="15"
+                fill="currentColor"
+                fontFamily="Inter, system-ui, sans-serif"
+                fontSize="14"
+                fontWeight="700"
+                letterSpacing="0.5"
+              >
+                OmniraSoft
+              </text>
+              <circle cx="86" cy="4" r="2.5" fill="currentColor" opacity="0.8" />
+            </svg>
+          </a>
+        </div>
       </div>
     </footer>
   );
