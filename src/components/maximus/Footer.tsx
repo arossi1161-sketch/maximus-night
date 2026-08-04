@@ -61,15 +61,26 @@ export function Footer({
             aria-label="Powered by OmniraSoft - Visita il sito"
           >
             <span className="text-xs text-muted-foreground group-hover:text-white transition">Powered by</span>
-            <img
-              src="/omnirasoft-logo.png"
-              alt="OmniraSoft logo"
-              width={96}
-              height={24}
-              className="h-5 w-auto object-contain opacity-80 group-hover:opacity-100 transition"
-              loading="lazy"
-              decoding="async"
-            />
+            <svg
+              viewBox="0 0 96 20"
+              className="h-5 w-auto opacity-90 group-hover:opacity-100 transition"
+              aria-hidden="true"
+              role="img"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <text
+                x="0"
+                y="15"
+                fill="currentColor"
+                fontFamily="Inter, system-ui, sans-serif"
+                fontSize="14"
+                fontWeight="700"
+                letterSpacing="0.5"
+              >
+                OmniraSoft
+              </text>
+              <circle cx="86" cy="4" r="2.5" fill="currentColor" opacity="0.8" />
+            </svg>
           </a>
         </div>
       </div>
