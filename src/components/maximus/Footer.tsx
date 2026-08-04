@@ -63,7 +63,7 @@ export function Footer({
             <span className="text-xs text-muted-foreground group-hover:text-white transition">Powered by</span>
             <svg
               viewBox="0 0 96 20"
-              className="h-5 w-auto opacity-90 group-hover:opacity-100 transition"
+              className="h-5 w-auto text-white opacity-90 group-hover:opacity-100 transition"
               aria-hidden="true"
               role="img"
               xmlns="http://www.w3.org/2000/svg"
