@@ -1,4 +1,4 @@
-export function Footer({
+import wordmarkLogo from "@/assets/omnirasoft-wordmark.svg";
   onOpenPrivacy,
   onOpenCookies,
   onOpenTerms,
