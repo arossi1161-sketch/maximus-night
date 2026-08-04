@@ -66,7 +66,7 @@ export function Footer({
               alt="OmniraSoft logo"
               width={96}
               height={24}
-              className="h-5 w-auto object-contain invert group-hover:invert-0 transition"
+              className="h-5 w-auto object-contain opacity-80 group-hover:opacity-100 transition"
               loading="lazy"
               decoding="async"
             />
