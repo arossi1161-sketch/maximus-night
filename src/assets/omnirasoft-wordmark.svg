@@ -1,0 +1,8 @@
+<svg viewBox="0 0 330 64" xmlns="http://www.w3.org/2000/svg" aria-label="Omnira Soft" role="img">
+  <g transform="translate(32, 32)">
+    <circle r="26" fill="none" stroke="#0A2540" stroke-width="5" stroke-linecap="round"/>
+    <line y1="-22" y2="22" stroke="#0A2540" stroke-width="4" stroke-linecap="round"/>
+  </g>
+  <text x="68" y="46" fill="#0A2540" font-family="'Space Grotesk','Sora',sans-serif" font-weight="700" font-size="34" letter-spacing="2">MNIRA</text>
+  <text x="196" y="46" fill="#1573C2" font-family="'Space Grotesk','Sora',sans-serif" font-weight="700" font-size="34" letter-spacing="4">SOFT</text>
+</svg>
